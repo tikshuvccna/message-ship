@@ -1,0 +1,1920 @@
+{
+ "frames": {
+  "hull": {
+   "frame": {
+    "x": 880,
+    "y": 480,
+    "w": 1117,
+    "h": 312
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1117,
+    "h": 312
+   },
+   "sourceSize": {
+    "w": 1117,
+    "h": 312
+   },
+   "anchor": {
+    "x": 0.46732,
+    "y": 0.52564
+   },
+   "anchorPx": {
+    "x": 522,
+    "y": 164
+   },
+   "note": "origin = ship centre (0,0) on the deck (z=0)"
+  },
+  "hull_front": {
+   "frame": {
+    "x": 979,
+    "y": 827,
+    "w": 1003,
+    "h": 197
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 1003,
+    "h": 197
+   },
+   "sourceSize": {
+    "w": 1003,
+    "h": 197
+   },
+   "anchor": {
+    "x": 0.50349,
+    "y": 0.39594
+   },
+   "anchorPx": {
+    "x": 505,
+    "y": 78
+   },
+   "note": "same origin as hull; draw above characters"
+  },
+  "mast": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 68,
+    "h": 478
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 68,
+    "h": 478
+   },
+   "sourceSize": {
+    "w": 68,
+    "h": 478
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.95816
+   },
+   "anchorPx": {
+    "x": 34,
+    "y": 458
+   },
+   "topPx": [
+    0.0,
+    -444.9633904577803
+   ],
+   "nestPx": [
+    0.0,
+    -334.86935570533984
+   ]
+  },
+  "sail_0": {
+   "frame": {
+    "x": 70,
+    "y": 0,
+    "w": 912,
+    "h": 398
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 912,
+    "h": 398
+   },
+   "sourceSize": {
+    "w": 912,
+    "h": 398
+   },
+   "anchor": {
+    "x": 0.41118,
+    "y": 1.09045
+   },
+   "anchorPx": {
+    "x": 375,
+    "y": 434
+   },
+   "note": "anchor = mast foot (same as mast); draw as a semi-transparent front layer"
+  },
+  "sail_1": {
+   "frame": {
+    "x": 984,
+    "y": 0,
+    "w": 912,
+    "h": 398
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 912,
+    "h": 398
+   },
+   "sourceSize": {
+    "w": 912,
+    "h": 398
+   },
+   "anchor": {
+    "x": 0.41118,
+    "y": 1.09045
+   },
+   "anchorPx": {
+    "x": 375,
+    "y": 434
+   },
+   "note": "anchor = mast foot (same as mast); draw as a semi-transparent front layer"
+  },
+  "sail_2": {
+   "frame": {
+    "x": 0,
+    "y": 480,
+    "w": 878,
+    "h": 345
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 878,
+    "h": 345
+   },
+   "sourceSize": {
+    "w": 878,
+    "h": 345
+   },
+   "anchor": {
+    "x": 0.38838,
+    "y": 1.25797
+   },
+   "anchorPx": {
+    "x": 341,
+    "y": 434
+   },
+   "note": "anchor = mast foot (same as mast); draw as a semi-transparent front layer"
+  },
+  "wheel": {
+   "frame": {
+    "x": 130,
+    "y": 1068,
+    "w": 84,
+    "h": 92
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 84,
+    "h": 92
+   },
+   "sourceSize": {
+    "w": 84,
+    "h": 92
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.79348
+   },
+   "anchorPx": {
+    "x": 42,
+    "y": 73
+   },
+   "hubPx": [
+    0.0,
+    -36.51242706032947
+   ],
+   "note": "disc faces the camera; helmsman stands behind (y+0.6)"
+  },
+  "wheel_base": {
+   "frame": {
+    "x": 974,
+    "y": 1068,
+    "w": 61,
+    "h": 76
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 61,
+    "h": 76
+   },
+   "sourceSize": {
+    "w": 61,
+    "h": 76
+   },
+   "anchor": {
+    "x": 0.42623,
+    "y": 0.75
+   },
+   "anchorPx": {
+    "x": 26,
+    "y": 57
+   }
+  },
+  "wheel_disc_0": {
+   "frame": {
+    "x": 1091,
+    "y": 1068,
+    "w": 84,
+    "h": 71
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 84,
+    "h": 71
+   },
+   "sourceSize": {
+    "w": 84,
+    "h": 71
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 1.02817
+   },
+   "anchorPx": {
+    "x": 42,
+    "y": 73
+   }
+  },
+  "wheel_disc_1": {
+   "frame": {
+    "x": 1349,
+    "y": 1068,
+    "w": 84,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 84,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 84,
+    "h": 70
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 1.02857
+   },
+   "anchorPx": {
+    "x": 42,
+    "y": 72
+   }
+  },
+  "wheel_disc_2": {
+   "frame": {
+    "x": 1177,
+    "y": 1068,
+    "w": 84,
+    "h": 71
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 84,
+    "h": 71
+   },
+   "sourceSize": {
+    "w": 84,
+    "h": 71
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 1.01408
+   },
+   "anchorPx": {
+    "x": 42,
+    "y": 72
+   }
+  },
+  "wheel_disc_3": {
+   "frame": {
+    "x": 1633,
+    "y": 1068,
+    "w": 82,
+    "h": 69
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 82,
+    "h": 69
+   },
+   "sourceSize": {
+    "w": 82,
+    "h": 69
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 1.02899
+   },
+   "anchorPx": {
+    "x": 41,
+    "y": 71
+   }
+  },
+  "wheel_disc_4": {
+   "frame": {
+    "x": 161,
+    "y": 1198,
+    "w": 80,
+    "h": 67
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 80,
+    "h": 67
+   },
+   "sourceSize": {
+    "w": 80,
+    "h": 67
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 1.04478
+   },
+   "anchorPx": {
+    "x": 40,
+    "y": 70
+   }
+  },
+  "wheel_disc_5": {
+   "frame": {
+    "x": 1717,
+    "y": 1068,
+    "w": 82,
+    "h": 69
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 82,
+    "h": 69
+   },
+   "sourceSize": {
+    "w": 82,
+    "h": 69
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 1.02899
+   },
+   "anchorPx": {
+    "x": 41,
+    "y": 71
+   }
+  },
+  "wheel_disc_6": {
+   "frame": {
+    "x": 1263,
+    "y": 1068,
+    "w": 84,
+    "h": 71
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 84,
+    "h": 71
+   },
+   "sourceSize": {
+    "w": 84,
+    "h": 71
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 1.01408
+   },
+   "anchorPx": {
+    "x": 42,
+    "y": 72
+   }
+  },
+  "wheel_disc_7": {
+   "frame": {
+    "x": 1435,
+    "y": 1068,
+    "w": 84,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 84,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 84,
+    "h": 70
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 1.02857
+   },
+   "anchorPx": {
+    "x": 42,
+    "y": 72
+   }
+  },
+  "cannon_base": {
+   "frame": {
+    "x": 1215,
+    "y": 1198,
+    "w": 74,
+    "h": 55
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 74,
+    "h": 55
+   },
+   "sourceSize": {
+    "w": 74,
+    "h": 55
+   },
+   "anchor": {
+    "x": 0.44595,
+    "y": 0.6
+   },
+   "anchorPx": {
+    "x": 33,
+    "y": 33
+   },
+   "pivotPx": [
+    0.0,
+    -30.275859556921137
+   ]
+  },
+  "cannon_barrel": {
+   "frame": {
+    "x": 379,
+    "y": 1269,
+    "w": 112,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 112,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 112,
+    "h": 40
+   },
+   "anchor": {
+    "x": 0.30357,
+    "y": 0.5
+   },
+   "anchorPx": {
+    "x": 34,
+    "y": 20
+   },
+   "note": "points +x (screen right); anchor = trunnion pivot; rotate in 2D"
+  },
+  "cannon_barrel_00": {
+   "frame": {
+    "x": 1627,
+    "y": 1198,
+    "w": 111,
+    "h": 52
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 111,
+    "h": 52
+   },
+   "sourceSize": {
+    "w": 111,
+    "h": 52
+   },
+   "anchor": {
+    "x": 0.30631,
+    "y": 1.07692
+   },
+   "anchorPx": {
+    "x": 34,
+    "y": 56
+   },
+   "angleDeg": 0.0,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_01": {
+   "frame": {
+    "x": 1801,
+    "y": 1068,
+    "w": 105,
+    "h": 69
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 105,
+    "h": 69
+   },
+   "sourceSize": {
+    "w": 105,
+    "h": 69
+   },
+   "anchor": {
+    "x": 0.30476,
+    "y": 0.98551
+   },
+   "anchorPx": {
+    "x": 32,
+    "y": 68
+   },
+   "angleDeg": 22.5,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_02": {
+   "frame": {
+    "x": 630,
+    "y": 1068,
+    "w": 86,
+    "h": 81
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 86,
+    "h": 81
+   },
+   "sourceSize": {
+    "w": 86,
+    "h": 81
+   },
+   "anchor": {
+    "x": 0.30233,
+    "y": 0.97531
+   },
+   "anchorPx": {
+    "x": 26,
+    "y": 79
+   },
+   "angleDeg": 45.0,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_03": {
+   "frame": {
+    "x": 352,
+    "y": 1068,
+    "w": 66,
+    "h": 87
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 66,
+    "h": 87
+   },
+   "sourceSize": {
+    "w": 66,
+    "h": 87
+   },
+   "anchor": {
+    "x": 0.36364,
+    "y": 0.98851
+   },
+   "anchorPx": {
+    "x": 24,
+    "y": 86
+   },
+   "angleDeg": 67.5,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_04": {
+   "frame": {
+    "x": 310,
+    "y": 1068,
+    "w": 40,
+    "h": 88
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 40,
+    "h": 88
+   },
+   "sourceSize": {
+    "w": 40,
+    "h": 88
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 1.01136
+   },
+   "anchorPx": {
+    "x": 20,
+    "y": 89
+   },
+   "angleDeg": 90.0,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_05": {
+   "frame": {
+    "x": 420,
+    "y": 1068,
+    "w": 66,
+    "h": 87
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 66,
+    "h": 87
+   },
+   "sourceSize": {
+    "w": 66,
+    "h": 87
+   },
+   "anchor": {
+    "x": 0.63636,
+    "y": 0.98851
+   },
+   "anchorPx": {
+    "x": 42,
+    "y": 86
+   },
+   "angleDeg": 112.5,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_06": {
+   "frame": {
+    "x": 718,
+    "y": 1068,
+    "w": 86,
+    "h": 81
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 86,
+    "h": 81
+   },
+   "sourceSize": {
+    "w": 86,
+    "h": 81
+   },
+   "anchor": {
+    "x": 0.69767,
+    "y": 0.97531
+   },
+   "anchorPx": {
+    "x": 60,
+    "y": 79
+   },
+   "angleDeg": 135.0,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_07": {
+   "frame": {
+    "x": 1908,
+    "y": 1068,
+    "w": 105,
+    "h": 69
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 105,
+    "h": 69
+   },
+   "sourceSize": {
+    "w": 105,
+    "h": 69
+   },
+   "anchor": {
+    "x": 0.69524,
+    "y": 0.98551
+   },
+   "anchorPx": {
+    "x": 73,
+    "y": 68
+   },
+   "angleDeg": 157.5,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_08": {
+   "frame": {
+    "x": 1740,
+    "y": 1198,
+    "w": 111,
+    "h": 52
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 111,
+    "h": 52
+   },
+   "sourceSize": {
+    "w": 111,
+    "h": 52
+   },
+   "anchor": {
+    "x": 0.69369,
+    "y": 1.07692
+   },
+   "anchorPx": {
+    "x": 77,
+    "y": 56
+   },
+   "angleDeg": 180.0,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_09": {
+   "frame": {
+    "x": 0,
+    "y": 1269,
+    "w": 105,
+    "h": 48
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 105,
+    "h": 48
+   },
+   "sourceSize": {
+    "w": 105,
+    "h": 48
+   },
+   "anchor": {
+    "x": 0.69524,
+    "y": 1.0
+   },
+   "anchorPx": {
+    "x": 73,
+    "y": 48
+   },
+   "angleDeg": 202.5,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_10": {
+   "frame": {
+    "x": 1291,
+    "y": 1198,
+    "w": 86,
+    "h": 55
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 86,
+    "h": 55
+   },
+   "sourceSize": {
+    "w": 86,
+    "h": 55
+   },
+   "anchor": {
+    "x": 0.69767,
+    "y": 0.87273
+   },
+   "anchorPx": {
+    "x": 60,
+    "y": 48
+   },
+   "angleDeg": 225.0,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_11": {
+   "frame": {
+    "x": 391,
+    "y": 1198,
+    "w": 66,
+    "h": 64
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 66,
+    "h": 64
+   },
+   "sourceSize": {
+    "w": 66,
+    "h": 64
+   },
+   "anchor": {
+    "x": 0.63636,
+    "y": 0.78125
+   },
+   "anchorPx": {
+    "x": 42,
+    "y": 50
+   },
+   "angleDeg": 247.5,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_12": {
+   "frame": {
+    "x": 63,
+    "y": 1198,
+    "w": 40,
+    "h": 68
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 40,
+    "h": 68
+   },
+   "sourceSize": {
+    "w": 40,
+    "h": 68
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.75
+   },
+   "anchorPx": {
+    "x": 20,
+    "y": 51
+   },
+   "angleDeg": 270.0,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_13": {
+   "frame": {
+    "x": 459,
+    "y": 1198,
+    "w": 66,
+    "h": 64
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 66,
+    "h": 64
+   },
+   "sourceSize": {
+    "w": 66,
+    "h": 64
+   },
+   "anchor": {
+    "x": 0.36364,
+    "y": 0.78125
+   },
+   "anchorPx": {
+    "x": 24,
+    "y": 50
+   },
+   "angleDeg": 292.5,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_14": {
+   "frame": {
+    "x": 1379,
+    "y": 1198,
+    "w": 86,
+    "h": 55
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 86,
+    "h": 55
+   },
+   "sourceSize": {
+    "w": 86,
+    "h": 55
+   },
+   "anchor": {
+    "x": 0.30233,
+    "y": 0.87273
+   },
+   "anchorPx": {
+    "x": 26,
+    "y": 48
+   },
+   "angleDeg": 315.0,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "cannon_barrel_15": {
+   "frame": {
+    "x": 107,
+    "y": 1269,
+    "w": 105,
+    "h": 48
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 105,
+    "h": 48
+   },
+   "sourceSize": {
+    "w": 105,
+    "h": 48
+   },
+   "anchor": {
+    "x": 0.30476,
+    "y": 1.0
+   },
+   "anchorPx": {
+    "x": 32,
+    "y": 48
+   },
+   "angleDeg": 337.5,
+   "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
+  },
+  "rack": {
+   "frame": {
+    "x": 243,
+    "y": 1198,
+    "w": 146,
+    "h": 67
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 146,
+    "h": 67
+   },
+   "sourceSize": {
+    "w": 146,
+    "h": 67
+   },
+   "anchor": {
+    "x": 0.49315,
+    "y": 0.74627
+   },
+   "anchorPx": {
+    "x": 72,
+    "y": 50
+   },
+   "slotsPx": [
+    [
+     -50.4,
+     -38.5
+    ],
+    [
+     -33.6,
+     -38.5
+    ],
+    [
+     -16.8,
+     -38.5
+    ],
+    [
+     -0.0,
+     -38.5
+    ],
+    [
+     16.8,
+     -38.5
+    ],
+    [
+     33.6,
+     -38.5
+    ],
+    [
+     50.4,
+     -38.5
+    ]
+   ]
+  },
+  "hatch": {
+   "frame": {
+    "x": 1853,
+    "y": 1198,
+    "w": 92,
+    "h": 51
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 92,
+    "h": 51
+   },
+   "sourceSize": {
+    "w": 92,
+    "h": 51
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.54902
+   },
+   "anchorPx": {
+    "x": 46,
+    "y": 28
+   }
+  },
+  "hatch_open": {
+   "frame": {
+    "x": 216,
+    "y": 1068,
+    "w": 92,
+    "h": 91
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 92,
+    "h": 91
+   },
+   "sourceSize": {
+    "w": 92,
+    "h": 91
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.74725
+   },
+   "anchorPx": {
+    "x": 46,
+    "y": 68
+   }
+  },
+  "crate_a": {
+   "frame": {
+    "x": 0,
+    "y": 1198,
+    "w": 61,
+    "h": 69
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 61,
+    "h": 69
+   },
+   "sourceSize": {
+    "w": 61,
+    "h": 69
+   },
+   "anchor": {
+    "x": 0.42623,
+    "y": 0.71014
+   },
+   "anchorPx": {
+    "x": 26,
+    "y": 49
+   }
+  },
+  "crate_b": {
+   "frame": {
+    "x": 566,
+    "y": 1068,
+    "w": 62,
+    "h": 86
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 62,
+    "h": 86
+   },
+   "sourceSize": {
+    "w": 62,
+    "h": 86
+   },
+   "anchor": {
+    "x": 0.43548,
+    "y": 0.76744
+   },
+   "anchorPx": {
+    "x": 27,
+    "y": 66
+   }
+  },
+  "crate_c": {
+   "frame": {
+    "x": 527,
+    "y": 1198,
+    "w": 86,
+    "h": 60
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 86,
+    "h": 60
+   },
+   "sourceSize": {
+    "w": 86,
+    "h": 60
+   },
+   "anchor": {
+    "x": 0.45349,
+    "y": 0.68333
+   },
+   "anchorPx": {
+    "x": 39,
+    "y": 41
+   }
+  },
+  "barrel": {
+   "frame": {
+    "x": 1521,
+    "y": 1068,
+    "w": 56,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 56,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 56,
+    "h": 70
+   },
+   "anchor": {
+    "x": 0.44643,
+    "y": 0.74286
+   },
+   "anchorPx": {
+    "x": 25,
+    "y": 52
+   }
+  },
+  "bucket": {
+   "frame": {
+    "x": 493,
+    "y": 1269,
+    "w": 36,
+    "h": 39
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 36,
+    "h": 39
+   },
+   "sourceSize": {
+    "w": 36,
+    "h": 39
+   },
+   "anchor": {
+    "x": 0.44444,
+    "y": 0.74359
+   },
+   "anchorPx": {
+    "x": 16,
+    "y": 29
+   }
+  },
+  "bucket_empty": {
+   "frame": {
+    "x": 531,
+    "y": 1269,
+    "w": 36,
+    "h": 39
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 36,
+    "h": 39
+   },
+   "sourceSize": {
+    "w": 36,
+    "h": 39
+   },
+   "anchor": {
+    "x": 0.44444,
+    "y": 0.74359
+   },
+   "anchorPx": {
+    "x": 16,
+    "y": 29
+   }
+  },
+  "plank": {
+   "frame": {
+    "x": 601,
+    "y": 1269,
+    "w": 73,
+    "h": 19
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 73,
+    "h": 19
+   },
+   "sourceSize": {
+    "w": 73,
+    "h": 19
+   },
+   "anchor": {
+    "x": 0.53425,
+    "y": 0.47368
+   },
+   "anchorPx": {
+    "x": 39,
+    "y": 9
+   }
+  },
+  "plank_stack": {
+   "frame": {
+    "x": 294,
+    "y": 1269,
+    "w": 83,
+    "h": 41
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 83,
+    "h": 41
+   },
+   "sourceSize": {
+    "w": 83,
+    "h": 41
+   },
+   "anchor": {
+    "x": 0.46988,
+    "y": 0.58537
+   },
+   "anchorPx": {
+    "x": 39,
+    "y": 24
+   }
+  },
+  "ball": {
+   "frame": {
+    "x": 569,
+    "y": 1269,
+    "w": 30,
+    "h": 29
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 30,
+    "h": 29
+   },
+   "sourceSize": {
+    "w": 30,
+    "h": 29
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.7931
+   },
+   "anchorPx": {
+    "x": 15,
+    "y": 23
+   },
+   "note": "neutral white: setTint(ammo colour)"
+  },
+  "anchor": {
+   "frame": {
+    "x": 488,
+    "y": 1068,
+    "w": 76,
+    "h": 87
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 76,
+    "h": 87
+   },
+   "sourceSize": {
+    "w": 76,
+    "h": 87
+   },
+   "anchor": {
+    "x": 0.47368,
+    "y": 0.83908
+   },
+   "anchorPx": {
+    "x": 36,
+    "y": 73
+   }
+  },
+  "flag_0": {
+   "frame": {
+    "x": 957,
+    "y": 1198,
+    "w": 127,
+    "h": 57
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 127,
+    "h": 57
+   },
+   "sourceSize": {
+    "w": 127,
+    "h": 57
+   },
+   "anchor": {
+    "x": 0.92126,
+    "y": 0.52632
+   },
+   "anchorPx": {
+    "x": 117,
+    "y": 30
+   },
+   "note": "anchor = staff centre; place at mast.topPx"
+  },
+  "flag_1": {
+   "frame": {
+    "x": 744,
+    "y": 1198,
+    "w": 127,
+    "h": 59
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 127,
+    "h": 59
+   },
+   "sourceSize": {
+    "w": 127,
+    "h": 59
+   },
+   "anchor": {
+    "x": 0.92126,
+    "y": 0.50847
+   },
+   "anchorPx": {
+    "x": 117,
+    "y": 30
+   },
+   "note": "anchor = staff centre; place at mast.topPx"
+  },
+  "flag_2": {
+   "frame": {
+    "x": 615,
+    "y": 1198,
+    "w": 127,
+    "h": 60
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 127,
+    "h": 60
+   },
+   "sourceSize": {
+    "w": 127,
+    "h": 60
+   },
+   "anchor": {
+    "x": 0.92126,
+    "y": 0.5
+   },
+   "anchorPx": {
+    "x": 117,
+    "y": 30
+   },
+   "note": "anchor = staff centre; place at mast.topPx"
+  },
+  "flag_3": {
+   "frame": {
+    "x": 1086,
+    "y": 1198,
+    "w": 127,
+    "h": 57
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 127,
+    "h": 57
+   },
+   "sourceSize": {
+    "w": 127,
+    "h": 57
+   },
+   "anchor": {
+    "x": 0.92126,
+    "y": 0.52632
+   },
+   "anchorPx": {
+    "x": 117,
+    "y": 30
+   },
+   "note": "anchor = staff centre; place at mast.topPx"
+  },
+  "flame_0": {
+   "frame": {
+    "x": 806,
+    "y": 1068,
+    "w": 54,
+    "h": 79
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 54,
+    "h": 79
+   },
+   "sourceSize": {
+    "w": 54,
+    "h": 79
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.86076
+   },
+   "anchorPx": {
+    "x": 27,
+    "y": 68
+   }
+  },
+  "flame_1": {
+   "frame": {
+    "x": 1579,
+    "y": 1068,
+    "w": 52,
+    "h": 70
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 52,
+    "h": 70
+   },
+   "sourceSize": {
+    "w": 52,
+    "h": 70
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.84286
+   },
+   "anchorPx": {
+    "x": 26,
+    "y": 59
+   }
+  },
+  "flame_2": {
+   "frame": {
+    "x": 1037,
+    "y": 1068,
+    "w": 52,
+    "h": 74
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 52,
+    "h": 74
+   },
+   "sourceSize": {
+    "w": 52,
+    "h": 74
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.85135
+   },
+   "anchorPx": {
+    "x": 26,
+    "y": 63
+   }
+  },
+  "flame_3": {
+   "frame": {
+    "x": 105,
+    "y": 1198,
+    "w": 54,
+    "h": 68
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 54,
+    "h": 68
+   },
+   "sourceSize": {
+    "w": 54,
+    "h": 68
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.83824
+   },
+   "anchorPx": {
+    "x": 27,
+    "y": 57
+   }
+  },
+  "flame_4": {
+   "frame": {
+    "x": 918,
+    "y": 1068,
+    "w": 54,
+    "h": 77
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 54,
+    "h": 77
+   },
+   "sourceSize": {
+    "w": 54,
+    "h": 77
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.85714
+   },
+   "anchorPx": {
+    "x": 27,
+    "y": 66
+   }
+  },
+  "flame_5": {
+   "frame": {
+    "x": 862,
+    "y": 1068,
+    "w": 54,
+    "h": 79
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 54,
+    "h": 79
+   },
+   "sourceSize": {
+    "w": 54,
+    "h": 79
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.86076
+   },
+   "anchorPx": {
+    "x": 27,
+    "y": 68
+   }
+  },
+  "leak_0": {
+   "frame": {
+    "x": 1467,
+    "y": 1198,
+    "w": 78,
+    "h": 55
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 78,
+    "h": 55
+   },
+   "sourceSize": {
+    "w": 78,
+    "h": 55
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.6
+   },
+   "anchorPx": {
+    "x": 39,
+    "y": 33
+   }
+  },
+  "leak_1": {
+   "frame": {
+    "x": 873,
+    "y": 1198,
+    "w": 82,
+    "h": 59
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 82,
+    "h": 59
+   },
+   "sourceSize": {
+    "w": 82,
+    "h": 59
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.62712
+   },
+   "anchorPx": {
+    "x": 41,
+    "y": 37
+   }
+  },
+  "leak_2": {
+   "frame": {
+    "x": 1547,
+    "y": 1198,
+    "w": 78,
+    "h": 53
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 78,
+    "h": 53
+   },
+   "sourceSize": {
+    "w": 78,
+    "h": 53
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.58491
+   },
+   "anchorPx": {
+    "x": 39,
+    "y": 31
+   }
+  },
+  "leak_3": {
+   "frame": {
+    "x": 214,
+    "y": 1269,
+    "w": 78,
+    "h": 47
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 78,
+    "h": 47
+   },
+   "sourceSize": {
+    "w": 78,
+    "h": 47
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.53191
+   },
+   "anchorPx": {
+    "x": 39,
+    "y": 25
+   }
+  },
+  "lantern_glow": {
+   "frame": {
+    "x": 0,
+    "y": 1068,
+    "w": 128,
+    "h": 128
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 128
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 128
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.5
+   },
+   "anchorPx": {
+    "x": 64,
+    "y": 64
+   },
+   "note": "additive blend (ADD); centre anchored"
+  },
+  "ship_shadow": {
+   "frame": {
+    "x": 0,
+    "y": 827,
+    "w": 977,
+    "h": 239
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 977,
+    "h": 239
+   },
+   "sourceSize": {
+    "w": 977,
+    "h": 239
+   },
+   "anchor": {
+    "x": 0.49232,
+    "y": 0.25105
+   },
+   "anchorPx": {
+    "x": 481,
+    "y": 60
+   },
+   "note": "same origin as hull (ship centre on deck); draw under the hull, above the sea"
+  }
+ },
+ "meta": {
+  "app": "message-ship art pipeline",
+  "version": "1.0",
+  "image": "ship.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 2013,
+   "h": 1317
+  },
+  "scale": "1",
+  "note": "frames[*].anchor = ground point (normalised): setOrigin(anchor.x, anchor.y). Projection: sx = x*56, sy = -y*32.12 - z*45.87 (ortho 35 deg)."
+ },
+ "anims": {
+  "flag": {
+   "frames": [
+    "flag_0",
+    "flag_1",
+    "flag_2",
+    "flag_3"
+   ],
+   "frameRate": 7,
+   "repeat": -1
+  },
+  "flame": {
+   "frames": [
+    "flame_0",
+    "flame_1",
+    "flame_2",
+    "flame_3",
+    "flame_4",
+    "flame_5"
+   ],
+   "frameRate": 12,
+   "repeat": -1
+  },
+  "leak": {
+   "frames": [
+    "leak_0",
+    "leak_1",
+    "leak_2",
+    "leak_3"
+   ],
+   "frameRate": 8,
+   "repeat": -1
+  },
+  "wheel_spin": {
+   "frames": [
+    "wheel_disc_0",
+    "wheel_disc_1",
+    "wheel_disc_2",
+    "wheel_disc_3",
+    "wheel_disc_4",
+    "wheel_disc_5",
+    "wheel_disc_6",
+    "wheel_disc_7"
+   ],
+   "frameRate": 12,
+   "repeat": -1
+  }
+ }
+}

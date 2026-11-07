@@ -1,0 +1,45 @@
+{
+  "ammo": [
+    { "id": "addr", "he": "כתובת", "color": "#ffb84a", "short": "יעד ושולח" },
+    { "id": "code", "he": "קוד", "color": "#4ad6c8", "short": "אותה שפה" },
+    { "id": "fmt", "he": "תבנית", "color": "#8f7bff", "short": "מבנה אחיד" },
+    { "id": "size", "he": "פיצול", "color": "#ff7f6e", "short": "חלקים קטנים" },
+    { "id": "time", "he": "תזמון", "color": "#7fd957", "short": "קצב נכון" },
+    { "id": "l1", "he": "1 פיזית", "color": "#d94f4f", "short": "אותות וכבל" },
+    { "id": "l2", "he": "2 קו נתונים", "color": "#e98a3d", "short": "MAC ומסגרת" },
+    { "id": "l3", "he": "3 רשת", "color": "#e8cf3a", "short": "כתובות IP" },
+    { "id": "l4", "he": "4 תעבורה", "color": "#58c46a", "short": "פורטים ומקטעים" },
+    { "id": "l5", "he": "5 שיחה", "color": "#3fb5c9", "short": "פתיחת שיחה וסגירתה" },
+    { "id": "l6", "he": "6 ייצוג", "color": "#5a7ee0", "short": "הצפנה ודחיסה" },
+    { "id": "l7", "he": "7 יישום", "color": "#a566d9", "short": "תוכנות ושירותים" },
+    { "id": "data", "he": "Data", "color": "#f4e7c5", "short": "המידע עצמו" },
+    { "id": "segment", "he": "Segment", "color": "#58c46a", "short": "מידע + פורטים" },
+    { "id": "packet", "he": "Packet", "color": "#e8cf3a", "short": "מקטע + כתובות IP" },
+    { "id": "frame", "he": "Frame", "color": "#e98a3d", "short": "פאקטה + MAC + סוף" },
+    { "id": "bits", "he": "Bits", "color": "#d94f4f", "short": "אפסים ואחדות באוויר" }
+  ],
+  "creatures": [
+    { "id": "garble_squid", "he": "דיונון הג'יבריש", "leg": 1, "symptom": "ג'יבריש!", "weakness": "code", "hint": "אין שפה משותפת. צריך קוד.", "hp": 6, "speed": 70, "radius": 46, "behavior": "orbit", "coins": 8, "friend": "דיונון הצבעים" },
+    { "id": "static_jelly", "he": "מדוזת הסטטי", "leg": 1, "symptom": "הכול מקרטע!", "weakness": "time", "hint": "מהר מדי או לא בזמן. צריך תזמון.", "hp": 5, "speed": 45, "radius": 40, "behavior": "drift", "coins": 6, "friend": "מדוזת האור" },
+    { "id": "tide_whale", "he": "לוויתן הגלים", "leg": 1, "symptom": "ענק מדי!", "weakness": "size", "hint": "גדול מדי להודעה אחת. צריך פיצול.", "hp": 12, "speed": 38, "radius": 78, "behavior": "charge", "coins": 16, "friend": "לוויתן הענן" },
+    { "id": "echo_gulls", "he": "שחפי ההד", "leg": 1, "symptom": "כולם שומעים!", "weakness": "addr", "hint": "הודעה ליעד אחד. צריך כתובת.", "hp": 3, "speed": 120, "radius": 26, "behavior": "swarm", "coins": 3, "friend": "שחפי הדואר" },
+    { "id": "lost_bottle", "he": "בקבוק אבוד", "leg": 1, "symptom": "אין כתובת!", "weakness": "addr", "hint": "אין יעד ואין שולח. צריך כתובת.", "hp": 4, "speed": 55, "radius": 30, "behavior": "drift", "coins": 5, "friend": "בקבוק הדואר" },
+    { "id": "paper_crab", "he": "סרטן הניירות", "leg": 1, "symptom": "הכול מבולגן!", "weakness": "fmt", "hint": "אין סדר קבוע. צריך תבנית.", "hp": 5, "speed": 60, "radius": 34, "behavior": "skitter", "coins": 6, "friend": "סרטן התיקים" },
+
+    { "id": "cable_eel", "he": "צלופח הכבל", "leg": 2, "symptom": "הכבל נקרע!", "weakness": "l1", "hint": "אותות וכבלים: שכבה 1.", "hp": 6, "speed": 80, "radius": 40, "behavior": "orbit", "coins": 8, "friend": "צלופח הברק" },
+    { "id": "frame_crab", "he": "סרטן המסגרת", "leg": 2, "symptom": "כתובת MAC לא נכונה!", "weakness": "l2", "hint": "MAC ומסגרות: שכבה 2.", "hp": 6, "speed": 62, "radius": 36, "behavior": "skitter", "coins": 8, "friend": "סרטן הצדפות" },
+    { "id": "ip_hermit", "he": "נזיר ה-IP", "leg": 2, "symptom": "הולך לרשת אחרת!", "weakness": "l3", "hint": "כתובות IP: שכבה 3.", "hp": 6, "speed": 56, "radius": 38, "behavior": "shooter", "coins": 8, "friend": "נזיר המפות" },
+    { "id": "port_urchin", "he": "קיפוד הפורטים", "leg": 2, "symptom": "איזה שירות? איזה פורט?", "weakness": "l4", "hint": "פורטים ומקטעים: שכבה 4.", "hp": 6, "speed": 50, "radius": 36, "behavior": "drift", "coins": 8, "friend": "קיפוד הדלתות" },
+    { "id": "session_snail", "he": "חילזון השיחה", "leg": 2, "symptom": "השיחה נותקה!", "weakness": "l5", "hint": "פתיחה וסגירה של שיחה: שכבה 5.", "hp": 5, "speed": 40, "radius": 34, "behavior": "charge", "coins": 7, "friend": "חילזון הסיפורים" },
+    { "id": "cipher_jelly", "he": "מדוזת הצפן", "leg": 2, "symptom": "מוצפן ודחוס!", "weakness": "l6", "hint": "הצפנה ודחיסה: שכבה 6.", "hp": 6, "speed": 52, "radius": 40, "behavior": "drift", "coins": 8, "friend": "מדוזת הקשת" },
+    { "id": "web_gull", "he": "שחף הרשת", "leg": 2, "symptom": "הדפדפן לא עונה!", "weakness": "l7", "hint": "יישומים כמו HTTP: שכבה 7.", "hp": 5, "speed": 100, "radius": 30, "behavior": "swarm", "coins": 6, "friend": "שחף האתרים" },
+
+    { "id": "raw_pearl", "he": "פנינת המידע", "leg": 3, "symptom": "רק מידע, בלי עטיפה!", "weakness": "data", "hint": "המידע לפני העטיפה: Data.", "hp": 5, "speed": 55, "radius": 34, "behavior": "drift", "coins": 7, "friend": "פנינת הזהב" },
+    { "id": "segment_barnacle", "he": "אצן המקטעים", "leg": 3, "symptom": "יש פורט מקור ויעד!", "weakness": "segment", "hint": "מידע ופורטים: Segment.", "hp": 6, "speed": 60, "radius": 36, "behavior": "skitter", "coins": 8, "friend": "אצן הגלים" },
+    { "id": "packet_ray", "he": "טריגון הפאקטות", "leg": 3, "symptom": "יש כתובות IP!", "weakness": "packet", "hint": "מקטע וכתובות IP: Packet.", "hp": 6, "speed": 85, "radius": 42, "behavior": "orbit", "coins": 8, "friend": "טריגון הכוכבים" },
+    { "id": "frame_turtle", "he": "צב המסגרת", "leg": 3, "symptom": "יש MAC ובדיקת סוף!", "weakness": "frame", "hint": "פאקטה, MAC ו-FCS: Frame.", "hp": 7, "speed": 44, "radius": 48, "behavior": "charge", "coins": 9, "friend": "צב השמורות" },
+    { "id": "bit_swarm", "he": "נחיל הביטים", "leg": 3, "symptom": "רק אפסים ואחדות!", "weakness": "bits", "hint": "אותות על הכבל: Bits.", "hp": 4, "speed": 130, "radius": 26, "behavior": "swarm", "coins": 4, "friend": "נחיל האור" },
+
+    { "id": "garble_kraken", "he": "הקראקן הגלום", "leg": 4, "symptom": "כל החוקים נשברו!", "weakness": "code", "hint": "לכל זרוע חוק אחר.", "hp": 90, "speed": 30, "radius": 150, "behavior": "boss", "coins": 100, "friend": "הקראקן הידיד" }
+  ]
+}
