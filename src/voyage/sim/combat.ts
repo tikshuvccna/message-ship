@@ -330,7 +330,7 @@ export function stepBolts(w: World, dt: number): void {
       b.life = 0;
       const p = hullContact(w, b.x, b.y);
       emit(w, { e: 'boltpop', x: b.x, y: b.y });
-      if (hullHit(w, 4, p.x, p.y)) {
+      if (hullHit(w, 3, p.x, p.y)) {
         sfx(w, 'hit_wrong', p.x);
         const r = w.rng.next();
         if (r < 0.3) addLeak(w, p.x, p.y * 0.85);

@@ -101,11 +101,11 @@ export function stepDeckHazards(w: World, dt: number): void {
   for (const f of w.fires) {
     f.level = Math.min(1, f.level + (rainy ? 0.02 : 0.06) * dt);
     if (w.ship.sinking < 0) {
-      w.ship.hull = Math.max(0, w.ship.hull - 0.35 * f.level * dt);
+      w.ship.hull = Math.max(0, w.ship.hull - 0.2 * f.level * dt);
     }
     if (f.level >= 1) {
       f.spreadT += dt;
-      if (f.spreadT > 9) {
+      if (f.spreadT > 14) {
         f.spreadT = 0;
         const a = w.rng.range(0, Math.PI * 2);
         addFire(w, f.x + Math.cos(a) * 1.3, f.y + Math.sin(a) * 1.0);

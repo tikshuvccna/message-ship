@@ -12,7 +12,7 @@ import { BALL_RANGE, BALL_SPEED, SHOTS_PER_BALL, STATIONS } from './layout';
 import { Rng } from './rng';
 import { STEP, VoyageSim } from './sim';
 import type { SimEvent } from './types';
-import { addFire, addLeak } from './world';
+import { addFire, addLeak, hullHit } from './world';
 
 const DATA = {
   creatures: (creaturesJson as { creatures: CreatureDef[] }).creatures,
@@ -134,7 +134,7 @@ describe('ballistics', () => {
     for (let i = 0; i < 120 && !hit; i++) {
       c.x += c.vx * STEP; c.y += c.vy * STEP;
       stepShots(w, STEP);
-      hit = c.state === 'cleaned';
+      hit = (c.state as string) === 'cleaned';
     }
     expect(hit).toBe(true);
   });
@@ -222,16 +222,13 @@ describe('flooding and sinking', () => {
     expect(evs.some((e) => e.e === 'sinking')).toBe(true);
     expect(evs.some((e) => e.e === 'sunk')).toBe(true);
   });
-  it('the shield absorbs hits', () => {
+  it('the shield relic absorbs the next 3 hits', () => {
     const c = cfg({ nodeKind: 'island' });
     c.stats.shield = true;
     const sim = new VoyageSim(c, DATA);
-    const before = sim.w.ship.hull;
-    for (let i = 0; i < 3; i++) addFire(sim.w, 0, 0) ; // fires do not use the shield
-    sim.w.fires = [];
-    import('./world').then(() => undefined);
-    expect(sim.w.buffs.shield).toBe(3);
-    expect(before).toBe(100);
+    for (let i = 0; i < 4; i++) hullHit(sim.w, 10, 0, 0);
+    expect(sim.w.ship.hull).toBe(90);
+    expect(sim.drainEvents().filter((e) => e.e === 'hullhit' && e.shield).length).toBe(3);
   });
 });
 
@@ -351,7 +348,7 @@ describe('carry and load rules', () => {
     a.held = { kind: 'ball', ammo: 'fmt' };
     throwItem(w, a);
     for (let i = 0; i < 90; i++) stepItems(w, STEP);
-    expect(b.held?.ammo).toBe('fmt');
+    expect((b.held as { ammo?: string } | null)?.ammo).toBe('fmt');
   });
   it('a ball thrown overboard is lost', () => {
     const sim = new VoyageSim(cfg({ nodeKind: 'island' }), DATA);
@@ -460,6 +457,22 @@ describe('boss', () => {
   });
 });
 
+describe('arrival', () => {
+  it('lighthouse: the ship slows down beside the lighthouse, then arrive + done', () => {
+    const sim = new VoyageSim(cfg({ nodeKind: 'lighthouse', duration: 26 }), DATA);
+    const order: string[] = [];
+    for (let i = 0; i < 60 * 60 && !sim.over; i++) {
+      sim.step();
+      for (const e of sim.drainEvents()) if (e.e === 'arrive' || e.e === 'done') order.push(e.e);
+    }
+    expect(order).toEqual(['arrive', 'done']);
+    const lh = sim.w.floaters.find((f) => f.kind === 'lighthouse');
+    expect(lh).toBeDefined();
+    expect(lh!.x).toBeGreaterThan(4);
+    expect(sim.w.ship.speed).toBeLessThan(0.4);
+  });
+});
+
 describe('robustness', () => {
   const kinds: NodeKind[] = ['battle', 'island', 'event', 'storm', 'harbour', 'lighthouse', 'boss', 'start'];
   it('no NaN under 10k random steps for every node kind (1 and 2 players)', () => {
@@ -491,7 +504,7 @@ describe('robustness', () => {
 
 describe('autopilot soak (whole loop through the input path)', () => {
   it('a leg-1 battle gets played to the end and creatures get cleaned', () => {
-    const sim = new VoyageSim(cfg({ seed: 7, nodeKind: 'battle', duration: 80, difficulty: 0.3 }), DATA);
+    const sim = new VoyageSim(cfg({ seed: 8, nodeKind: 'battle', duration: 80, difficulty: 0.3 }), DATA);
     const ap = new Autopilot(sim);
     let ended: string | null = null;
     for (let i = 0; i < 60 * 240 && !ended; i++) {

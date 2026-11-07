@@ -31,9 +31,10 @@ export function spawnCreature(
     hp: def.hp * (friendly ? 1 : 1 + diff * 0.35), maxHp: 0,
     r, rx: isCharge ? r * 1.25 : r, ry: isCharge ? r * 0.85 : r,
     maxSpeed: (def.speed / PX_PER_M) * (1 + 0.2 * diff),
-    state: friendly ? 'act' : 'enter', t: 0, cd: rng.range(4, 7), ang: rng.range(0, Math.PI * 2),
+    state: friendly ? 'act' : 'enter', t: 0, cd: rng.range(5, 8), ang: rng.range(0, Math.PI * 2),
     side: y >= sy ? 1 : -1, attack: null, tx: 0, ty: 0, group, dx: 0, dy: 0, jamming: null, stun: 0, hitFlash: 0,
     face: x > 0 ? -1 : 1, wave, friendly, hostile: !friendly,
+    sec: from === 'bow' ? 0 : from === 'far' ? 1 : from === 'stern' ? 2 : 3, secT: rng.range(8, 13),
   };
   c.maxHp = c.hp;
   if (def.behavior === 'drift') {
@@ -179,24 +180,46 @@ function behave(w: World, c: Creature, dt: number): void {
   }
   // 'act'
   const catchUp = (tx: number, ty: number): number => (Math.hypot(tx - c.x, ty - c.y) > 5 ? 1.9 : 1);
+  // hover in one cannon's sector for a while, then move to another (readable: "it's on the near side!")
+  c.secT -= dt;
+  if (b === 'swarm') {
+    // a flock moves as one: the sector is a function of the flock id and the clock
+    const id = c.wave * 10 + c.group;
+    c.sec = (id + Math.floor((w.t + id * 2.7) / 11)) % 4;
+  } else if (c.secT <= 0) {
+    c.secT = w.rng.range(9, 14);
+    const step = w.rng.chance(0.5) ? 1 : 3;
+    c.sec = (c.sec + step) % 4;
+  }
+  const sector = (dist: number): { x: number; y: number } => {
+    const j = Math.sin(c.t * 0.35 + c.uid * 1.7);
+    const k = Math.cos(c.t * 0.27 + c.uid);
+    switch (c.sec) {
+      case 0: return { x: 7.6 + dist * 0.75, y: sy + j * 2.6 };
+      case 1: return { x: 1 + j * 3.2, y: sy + 3.2 + dist * 0.55 + k * 0.6 };
+      case 2: return { x: -7.4 - dist * 0.7, y: sy + 1.6 + j * 2.2 };
+      default: return { x: 1 + j * 3.2, y: sy - 3.2 - dist * 0.55 - k * 0.6 };
+    }
+  };
   switch (b) {
     case 'orbit': {
-      c.ang += ((sp * 0.75) / 9.5) * dt;
-      const tx = Math.cos(c.ang) * 10.5, ty = sy + Math.sin(c.ang) * 7.4;
+      const q = sector(7);
+      const tx = q.x, ty = q.y;
       steerTo(c, tx, ty, sp * catchUp(tx, ty), dt);
       if (c.cd <= 0 && inArena(w, c)) { const h = hullAim(w); startTelegraph(w, c, 'bolt', h.x, h.y); }
       break;
     }
     case 'shooter': {
       // keep distance on its own side, strafe slowly
-      c.ang += Math.sin(c.t * 0.3) * 0.12 * dt;
-      const tx = Math.cos(c.ang) * 11.5, ty = sy + Math.sin(c.ang) * 8.4;
+      const q = sector(8.5);
+      const tx = q.x, ty = q.y;
       steerTo(c, tx, ty, sp * catchUp(tx, ty), dt);
       if (c.cd <= 0 && inArena(w, c)) { const h = hullAim(w); startTelegraph(w, c, 'bolt', h.x, h.y); }
       break;
     }
     case 'charge': {
-      const tx = Math.cos(c.ang) * 11, ty = sy + Math.sin(c.ang) * 8;
+      const q = sector(8);
+      const tx = q.x, ty = q.y;
       steerTo(c, tx, ty, sp * 1.6 * catchUp(tx, ty), dt);
       if (c.cd <= 0 && inArena(w, c) && Math.hypot(tx - c.x, ty - c.y) < 2.5) {
         startTelegraph(w, c, 'charge', 0, sy);
@@ -214,10 +237,9 @@ function behave(w: World, c: Creature, dt: number): void {
       break;
     }
     case 'swarm': {
-      // a flock hovers in its own sector of the sea (sweeping back and forth), so one cannon can cover it
-      const ga = c.ang + Math.sin(c.t * 0.22 + c.group) * 0.8 + Math.sin(c.t * 1.3 + c.uid) * 0.12;
-      const r = 7.6 + Math.sin(w.t * 1.7 + c.uid) * 0.8;
-      const tx = Math.cos(ga) * (r + 2.4), ty = sy + Math.sin(ga) * r * 0.85;
+      // a flock hovers together in one sector, members jittering around the flock point
+      const q = sector(6);
+      const tx = q.x + Math.sin(c.t * 1.9 + c.uid * 2.1) * 1.3, ty = q.y + Math.cos(c.t * 1.6 + c.uid * 1.3) * 0.9;
       steerTo(c, tx, ty, sp * catchUp(tx, ty), dt, 1.2, 9);
       if (c.cd <= 0 && inArena(w, c)) { const h = hullAim(w); startTelegraph(w, c, 'peck', h.x, h.y); }
       break;
@@ -247,7 +269,7 @@ function doAttack(w: World, c: Creature): void {
         fireBolt(w, c.uid, c.x, c.y, c.x + Math.cos(a) * 10, c.y + Math.sin(a) * 10, spd);
       }
       c.state = 'recover';
-      c.cd = b === 'shooter' ? cdFor(w, 4.5, 2) : cdFor(w, 6, 2.5);
+      c.cd = b === 'shooter' ? cdFor(w, 5.5, 2.5) : cdFor(w, 7, 3);
       break;
     }
     case 'charge': {
@@ -273,7 +295,7 @@ function doAttack(w: World, c: Creature): void {
       const e = ellipseNorm(c.x, c.y, 0, w.ship.y, HULL_RX + c.r + 3.8, HULL_RY + c.r + 3.8);
       if (e < 1) {
         const p = hullContact(w, c.x, c.y);
-        if (hullHit(w, 4, p.x, p.y)) {
+        if (hullHit(w, 3, p.x, p.y)) {
           sfx(w, 'thunder', c.x);
           if (w.rng.chance(0.3)) addFire(w, p.x, p.y * 0.8);
         }
@@ -299,19 +321,19 @@ function stepAttack(w: World, c: Creature, dt: number): void {
     const p = hullContact(w, c.x, c.y);
     const n = hullNormal(w, c);
     if (c.attack === 'charge') {
-      if (hullHit(w, 8, p.x, p.y)) {
+      if (hullHit(w, 7, p.x, p.y)) {
         if (w.rng.chance(0.6)) addLeak(w, p.x, p.y * 0.8);
         sfx(w, 'wave_slam', c.x);
       }
       pushShip(w, -n.y * 1.6);
       c.vx = n.x * 3;
       c.vy = n.y * 3;
-      c.cd = cdFor(w, 7, 3);
+      c.cd = cdFor(w, 9, 3);
     } else {
       if (hullHit(w, 1, p.x, p.y)) sfx(w, 'hit_wrong', c.x);
       c.vx = n.x * 4;
       c.vy = n.y * 4;
-      c.cd = cdFor(w, 5, 3);
+      c.cd = cdFor(w, 6, 4);
     }
     c.state = 'recover';
     c.t = 0;

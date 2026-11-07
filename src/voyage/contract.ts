@@ -63,6 +63,10 @@ export interface VoyageConfig {
   duration: number;
   checkpointHull: number;              // hull to start with (0..1 of max)
   quality: 'low' | 'medium' | 'high';
+  /** optional 0..1 battle difficulty (default: derived from leg and the trailing number of nodeId) */
+  difficulty?: number;
+  /** optional id of the message bottle floating in this node (default: bottle_<leg>_<hash of nodeId>) */
+  bottleId?: string;
 }
 
 export interface HudState {

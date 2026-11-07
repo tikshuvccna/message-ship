@@ -8,7 +8,7 @@ import { solveLead } from './sim/ballistics';
 import { canFire, clampAim, muzzle, targets } from './sim/combat';
 import { decide } from './sim/deck';
 import { BALL_RANGE, BALL_SPEED, CANNONS, CANNON_IDS, RACK_ZONE, STATIONS, type CannonId } from './sim/layout';
-import { wrapAngle } from './sim/math';
+import { segCircle, wrapAngle } from './sim/math';
 import type { VoyageSim } from './sim/sim';
 import type { AmmoId } from './contract';
 
@@ -20,6 +20,8 @@ export class Autopilot {
   private lastY = 0;
   private side = 1;
   private wait = 0;
+  private lock: AmmoId | null = null;
+  private lockT = 0;
   debug: ((s: string) => void) | null = null;
   constructor(private sim: VoyageSim, private p = 0) {}
 
@@ -29,7 +31,15 @@ export class Autopilot {
     const pl = w.players[this.p];
     if (!pl || w.over) return;
     if (pl.job) { this.sim.setInput({ p: this.p as 0 | 1, moveX: 0, moveY: 0, action: false, throwIt: false }); return; }
-    const tg = this.pickTarget();
+    let tg = this.pickTarget();
+    // hysteresis: stick to the chosen rule for a while (players do not change their mind every frame)
+    this.lockT -= dt;
+    if (this.lock && this.lockT > 0) {
+      const same = this.allTargets().filter((t) => t.weakness === this.lock);
+      if (same.length) tg = same.reduce((a, b) => (Math.hypot(a.x, a.y - w.ship.y) < Math.hypot(b.x, b.y - w.ship.y) ? a : b));
+      else this.lock = null;
+    }
+    if (tg && tg.weakness !== this.lock) { this.lock = tg.weakness; this.lockT = 6; }
     const need: AmmoId | null = tg ? tg.weakness : null;
 
     // at a cannon: aim & fire, or leave
@@ -96,7 +106,7 @@ export class Autopilot {
       else if (tg) {
         const id = this.cannonFor(tg.x, tg.y, true);
         const u = STATIONS[id].use;
-        goal = { x: u.x, y: u.y, act: !w.cannons[id].loaded };
+        goal = { x: u.x, y: u.y, act: true };
       }
     } else if (need) {
       const i = w.rack.findIndex((s) => s.ammo === need);
@@ -107,9 +117,19 @@ export class Autopilot {
       }
     }
     if (!goal) { this.press(0, 0, false, false); return; }
+    // detour around the mast (the only collider in the middle of the deck)
+    const mx0 = STATIONS.mast.x, my0 = STATIONS.mast.y;
+    if (segCircle(pl.x, pl.y, goal.x, goal.y, mx0, my0, 0.75) && Math.hypot(pl.x - mx0, pl.y - my0) > 0.3) {
+      const ux = goal.x - pl.x, uy = goal.y - pl.y;
+      const ul = Math.hypot(ux, uy) || 1;
+      let nx = -uy / ul, ny = ux / ul;
+      if ((pl.x - mx0) * nx + (pl.y - my0) * ny < 0) { nx = -nx; ny = -ny; }
+      goal = { x: mx0 + nx * 1.05, y: my0 + ny * 1.05, act: false };
+    }
     const dx = goal.x - pl.x, dy = goal.y - pl.y;
     const d = Math.hypot(dx, dy);
     if (d < 0.35) {
+      if (!goal.act) { this.press(dx, dy, false, false); return; }
       const act = decide(w, pl);
       this.press(0, 0, goal.act && !!act && act.a !== 'busy', false);
       return;
@@ -167,4 +187,14 @@ export class Autopilot {
     let best: CannonId = 'cannon_bow';
     let bs = 1e9;
     for (const id of CANNON_IDS) {
-      const st = STATIO
+      const st = STATIONS[id];
+      const a = Math.atan2(y - w.ship.y - st.y, x - st.x);
+      const off = Math.abs(wrapAngle(a - CANNONS[id].base));
+      let score = off > CANNONS[id].arc ? 100 + off : Math.hypot(st.use.x - (w.players[this.p]?.x ?? 0), st.use.y - (w.players[this.p]?.y ?? 0));
+      if (w.cannons[id].jam) continue;
+      if (empty && w.cannons[id].loaded && w.cannons[id].charges > 1) score += 4;
+      if (score < bs) { bs = score; best = id; }
+    }
+    return best;
+  }
+}

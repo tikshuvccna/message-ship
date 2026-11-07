@@ -21,12 +21,14 @@ def main():
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path=CHROME, headless=True,
                               args=["--headless=new", "--use-angle=d3d11", "--enable-gpu", "--ignore-gpu-blocklist",
-                                    "--disable-background-timer-throttling", "--disable-renderer-backgrounding"])
+                                    "--disable-background-timer-throttling", "--disable-renderer-backgrounding"] + (["--disable-gpu-vsync", "--disable-frame-rate-limit"] if os.environ.get("VOY_UNCAP") else []))
         ctx = b.new_context(viewport={"width": W, "height": H})
         pg = ctx.new_page()
         logs = []
         pg.on("console", lambda m: logs.append(m.type + ": " + m.text) if m.type in ("error", "warning") else None)
         pg.on("pageerror", lambda e: logs.append("PAGEERROR: " + str(e)))
+        if os.environ.get("VOY_CPU"):
+            ctx.new_cdp_session(pg).send("Emulation.setCPUThrottlingRate", {"rate": float(os.environ["VOY_CPU"])})
         pg.goto(BASE + "?" + query, wait_until="domcontentloaded")
         try:
             pg.wait_for_function("() => window.__dev && window.__dev.sim()", timeout=20000)

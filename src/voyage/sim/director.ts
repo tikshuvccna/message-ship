@@ -87,7 +87,11 @@ export function buildSchedule(cfg: VoyageConfig & { difficulty?: number; bottleI
         const spawns: WaveSpawn[] = [];
         let used = 0;
         let guard = 0;
-        while (used < budget && guard++ < 12) {
+        // every creature of the pool shows up during the battle (each rule gets practised)
+        const minNew = Math.ceil((order.length - oi) / (n - w));
+        let fresh = 0;
+        while ((used < budget || fresh < minNew) && guard++ < 12) {
+          if (oi < order.length) fresh++;
           const def = oi < order.length ? (order[oi++] as CreatureDef) : rng.pick(pool);
           const swarm = def.behavior === 'swarm';
           const count = swarm ? 3 + Math.round(diff * 1.4) : 1;

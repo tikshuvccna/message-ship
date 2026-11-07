@@ -510,7 +510,7 @@ export function stepPlayers(w: World, dt: number): void {
     if (al > maxA) { p.vx += (ax / al) * maxA; p.vy += (ay / al) * maxA; }
     else { p.vx = tvx; p.vy = tvy; }
     // a rolling deck nudges people a little
-    p.vy += -w.ship.roll * 3 * dt;
+    if (w.storm.level > 0.3) p.vy += -w.ship.roll * 3 * w.storm.level * dt;
     p.x += p.vx * dt;
     p.y += p.vy * dt;
     collideBody(p);

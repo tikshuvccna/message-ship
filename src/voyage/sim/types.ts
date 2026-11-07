@@ -79,6 +79,8 @@ export interface Creature {
   wave: number;              // spawned in wave n
   friendly: boolean;         // already friendly (island visitor)
   hostile: boolean;          // counts for clearing
+  sec: number;               // sector around the ship it hovers in (0 bow, 1 far, 2 stern, 3 near)
+  secT: number;              // seconds until it moves to another sector
 }
 
 export interface Projectile {

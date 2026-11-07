@@ -194,7 +194,7 @@ export function addLeak(w: World, x: number, y: number, size = 1): void {
 }
 
 export function addFire(w: World, x: number, y: number): void {
-  if (w.fires.length >= 6) return;
+  if (w.fires.length >= 5) return;
   const p = deckPoint(w, x, y);
   for (const f of w.fires) if (Math.hypot(f.x - p.x, f.y - p.y) < 0.8) { f.level = Math.min(1, f.level + 0.3); return; }
   w.fires.push({ uid: uid(w), x: p.x, y: p.y, level: 0.25, spreadT: 0 });

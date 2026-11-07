@@ -58,7 +58,7 @@ export const STATIONS: Record<StationId, StationDef> = {
   cannon_bow: { id: 'cannon_bow', x: 6.8, y: 0, rect: R(6.75, 0, 0.5, 0.42), use: { x: 5.85, y: 0, r: 1.0 } },
   cannon_stern: { id: 'cannon_stern', x: -7.4, y: 1.8, rect: R(-7.35, 1.8, 0.45, 0.45), use: { x: -6.45, y: 1.8, r: 1.0 } },
   cannon_far: { id: 'cannon_far', x: 1.0, y: 3.2, rect: R(1.0, 3.15, 0.45, 0.45), use: { x: 1.0, y: 2.25, r: 1.0 } },
-  cannon_near: { id: 'cannon_near', x: 1.0, y: -3.2, rect: R(1.0, -3.15, 0.45, 0.45), use: { x: 1.0, y: -2.25, r: 1.0 } },
+  cannon_near: { id: 'cannon_near', x: 1.0, y: -3.2, rect: R(1.0, -3.15, 0.45, 0.45), use: { x: 1.0, y: -1.75, r: 1.0 } },
   mast: { id: 'mast', x: 1.0, y: 0, rect: R(1.0, 0, 0.28, 0.28), use: { x: 1.0, y: 0, r: 1.05 } },
   rack: { id: 'rack', x: -3.2, y: 2.9, rect: R(-3.2, 3.0, 1.3, 0.32), use: { x: -3.2, y: 2.25, r: 1.55 } },
   planks: { id: 'planks', x: -4.6, y: -2.8, rect: R(-4.6, -2.85, 0.6, 0.4), use: { x: -4.6, y: -2.05, r: 0.95 } },

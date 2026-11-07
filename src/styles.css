@@ -266,3 +266,8 @@ body.modal .hud { visibility: hidden; }
   .screen.title-screen { gap: 8px; } .menu { gap: 6px; } .lh-top .portrait.big { width: 64px; height: 64px; }
 }
 @media (max-width: 480px) { .match { grid-template-columns: 1fr; } .lh-games { grid-template-columns: 1fr; } .hrow { grid-template-columns: 1fr; } }
+
+/* portrait phones: the sea is a wide scene */
+@media (orientation: portrait) and (max-width: 700px) {
+  .hud::after { content: 'סובבו את המכשיר לרוחב למשחק טוב יותר'; position: absolute; top: 64px; left: 50%; transform: translateX(-50%); width: max-content; max-width: 92vw; background: rgba(8, 26, 45, .9); border: 2px solid var(--brass); border-radius: 12px; padding: 6px 14px; font-weight: 800; text-align: center; direction: rtl; }
+}

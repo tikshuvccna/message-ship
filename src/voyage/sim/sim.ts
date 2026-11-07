@@ -25,6 +25,7 @@ export class VoyageSim {
   readonly w: World;
   readonly sched: Schedule;
   private acc = 0;
+  private due = new Map<ScheduleEntry, number>();
 
   constructor(cfg: FullConfig, data: SimData) {
     this.sched = buildSchedule(cfg, data.creatures);
@@ -121,6 +122,12 @@ export class VoyageSim {
     while (w.schedIdx < list.length) {
       const e = list[w.schedIdx];
       if (!e || e.at > w.t) break;
+      // battle waves do not pile up: a wave waits (up to 20 s) while more than one hostile is still out
+      if (e.kind === 'wave' && this.sched.kind === 'battle' && e.wave > 0 && hostileAlive(w) > 1) {
+        const first = this.due.get(e) ?? e.at;
+        this.due.set(e, first);
+        if (w.t < first + 20) break;
+      }
       w.schedIdx++;
       this.run(e);
     }
@@ -253,7 +260,7 @@ export class VoyageSim {
     const sc = this.sched;
     if (sc.arrival) {
       const mark = w.floaters.find((f) => f.alive && (f.kind === 'lighthouse' || f.kind === 'pier'));
-      if (!w.arrived && mark && mark.x <= 9.5) {
+      if (!w.arrived && mark && mark.x <= 14) {
         w.arrived = true;
         toast(w, T.arrived, 'good');
       }

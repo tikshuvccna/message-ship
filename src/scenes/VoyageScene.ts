@@ -333,7 +333,23 @@ export class VoyageScene extends Phaser.Scene {
       up: K.UP, down: K.DOWN, left: K.LEFT, right: K.RIGHT, enter: K.ENTER, shift: K.SHIFT,
     }, false) as Record<string, Phaser.Input.Keyboard.Key>;
     kb.addCapture([K.SPACE, K.UP, K.DOWN, K.LEFT, K.RIGHT]);
+    // buttons are latched from raw keydown events: a tap shorter than a frame still counts
+    const onDown = (ev: KeyboardEvent): void => {
+      if (ev.repeat) return;
+      switch (ev.code) {
+        case 'KeyE': this.pressed.a0 = true; break;
+        case 'Space': this.pressed.t0 = true; break;
+        case 'Enter': case 'NumpadEnter': this.pressed.a1 = true; break;
+        case 'ShiftRight': this.pressed.t1 = true; break;
+        case 'ShiftLeft': if (!this.cfg.twoPlayers) this.pressed.t0 = true; break;
+        default: break;
+      }
+    };
+    kb.on('keydown', onDown);
+    this.unsub.push(() => kb.off('keydown', onDown));
   }
+
+  private pressed = { a0: false, t0: false, a1: false, t1: false };
 
   private onVirtual(v: import('../voyage/contract').VirtualInput): void {
     const s = this.virt[v.p];
@@ -347,12 +363,13 @@ export class VoyageScene extends Phaser.Scene {
   private readInput(): void {
     const k = this.keys;
     const dn = (n: string): number => (k[n]?.isDown ? 1 : 0);
-    const jd = (n: string): boolean => !!k[n] && Phaser.Input.Keyboard.JustDown(k[n]!);
+    const pr = this.pressed;
     const two = this.cfg.twoPlayers;
     const inputs: { mx: number; my: number; a: boolean; t: boolean }[] = [
-      { mx: dn('d') - dn('a'), my: dn('w') - dn('s'), a: jd('e'), t: jd('space') },
-      { mx: dn('right') - dn('left'), my: dn('up') - dn('down'), a: jd('enter'), t: jd('shift') },
+      { mx: dn('d') - dn('a'), my: dn('w') - dn('s'), a: pr.a0, t: pr.t0 },
+      { mx: dn('right') - dn('left'), my: dn('up') - dn('down'), a: pr.a1, t: pr.t1 },
     ];
+    pr.a0 = pr.t0 = pr.a1 = pr.t1 = false;
     if (!two) {
       const p2 = inputs[1]!, p1 = inputs[0]!;
       if (p1.mx === 0 && p1.my === 0) { p1.mx = p2.mx; p1.my = p2.my; }
@@ -447,7 +464,7 @@ export class VoyageScene extends Phaser.Scene {
     this.shipC.setPosition(shipX, shipY);
     this.shipC.setRotation(-s.pitch * 0.9 + s.roll * 0.12 + sink * 0.05);
     this.shipC.setScale(1, 1 + s.roll * 0.35);
-    this.shipC.setAlpha(1 - Math.max(0, sink - 1) * 0.5);
+    this.shipC.setAlpha(1 - Math.max(0, sink - 1.8) * 1.1);
     this.shipShadow.setPosition(CX, CY - (s.y - this.camY) * PY + 8).setScale(1 + s.heave * 0.04);
 
     this.renderCrests(dt, t);
@@ -605,7 +622,7 @@ export class VoyageScene extends Phaser.Scene {
         v.held.setScale(p.held.kind === 'ball' ? 1.15 : 1);
         if (p.held.kind === 'ball' && p.held.ammo) v.held.setTint(this.ammoColor[p.held.ammo] ?? 0xffffff); else v.held.clearTint();
       } else v.held.setVisible(false);
-      if (v.tag) v.tag.setPosition(pos.sx, pos.sy - 98 - (p.held ? 22 : 0)).setDepth(-p.y * 100 + 0.3);
+      if (v.tag) v.tag.setPosition(pos.sx, pos.sy - 98 - (p.held ? 22 : 0)).setDepth(25000 + i);
     });
     const b = w.bit;
     if (b && this.bitV) {
@@ -722,12 +739,14 @@ export class VoyageScene extends Phaser.Scene {
       const c = w.cannons[id];
       if (c.loaded) {
         const st = STATIONS[id];
-        const pp = project(st.x, st.y, 1.25);
+        // a small row of lights beside the cannon base (not over the gunner's head)
+        const pp = project(st.x, st.y, 0);
         const col = this.ammoColor[c.loaded] ?? 0xffffff;
+        const ox = id === 'cannon_stern' ? -34 : 34, oy = id === 'cannon_near' ? 10 : 2;
         for (let k = 0; k < c.charges; k++) {
-          const x = pp.sx + (k - (c.charges - 1) / 2) * 11;
-          tg.fillStyle(0x10131f, 0.75).fillCircle(x, pp.sy, 5.5);
-          tg.fillStyle(col, 1).fillCircle(x, pp.sy, 4);
+          const x = pp.sx + ox + (id === 'cannon_stern' ? -k : k) * 12;
+          tg.fillStyle(0x10131f, 0.8).fillCircle(x, pp.sy + oy, 6);
+          tg.fillStyle(col, 1).fillCircle(x, pp.sy + oy, 4.5);
         }
       }
       if (!c.loaded || c.loadT <= 0) continue;
@@ -768,7 +787,7 @@ export class VoyageScene extends Phaser.Scene {
         const spr = this.add.image(0, 0, tx.key, tx.frame);
         spr.setOriginFromFrame();
         const bubble = this.add.text(0, 0, c.def.symptom, {
-          fontFamily: FONT, fontSize: '19px', fontStyle: 'bold', color: '#ffffff', backgroundColor: 'rgba(24,16,44,0.85)',
+          fontFamily: FONT, fontSize: '19px', fontStyle: 'bold', color: '#2a1838', backgroundColor: '#fff4dc',
           padding: { x: 8, y: 4 }, rtl: true,
         }).setOrigin(0.5, 1).setDepth(D.bubble);
         v = { spr, shadow, ring, bubble, onDeck: false, jx: 0 };
@@ -820,7 +839,9 @@ export class VoyageScene extends Phaser.Scene {
         v.ring.setVisible(true).setPosition(sx, gy).setScale((rr * PX_PER_M) / 96, (rr * PY) / 96).setAlpha(0.4 + u * 0.6);
       } else v.ring.setVisible(false);
       // symptom bubble (hostile, on screen)
-      const showBubble = c.hostile && c.state !== 'cleaned' && c.state !== 'flee' && Math.abs(c.x) < 14.5 && alpha > 0.3;
+      // one bubble per flock: only its first living member speaks
+      const flockLead = c.def.behavior !== 'swarm' || !w.creatures.some((o) => o !== c && o.def.id === c.def.id && o.wave === c.wave && o.group === c.group && o.uid < c.uid && o.hostile && o.state !== 'cleaned' && o.state !== 'gone' && o.state !== 'flee');
+      const showBubble = flockLead && c.hostile && c.state !== 'cleaned' && c.state !== 'flee' && Math.abs(c.x) < 14.5 && alpha > 0.3;
       v.bubble.setVisible(showBubble);
       if (showBubble) {
         let bx = sx, by = sy - (v.spr.displayHeight * (deck ? 0.75 : 0.62)) - 6;
@@ -882,7 +903,7 @@ export class VoyageScene extends Phaser.Scene {
       // symptom bubble above the arm
       let bub = this.armBubbles.get(a.uid);
       if (!bub) {
-        bub = this.add.text(0, 0, a.symptom, { fontFamily: FONT, fontSize: '18px', fontStyle: 'bold', color: '#fff', backgroundColor: 'rgba(24,16,44,0.85)', padding: { x: 7, y: 3 }, rtl: true }).setOrigin(0.5, 1).setDepth(D.bubble);
+        bub = this.add.text(0, 0, a.symptom, { fontFamily: FONT, fontSize: '18px', fontStyle: 'bold', color: '#2a1838', backgroundColor: '#ffe3ef', padding: { x: 7, y: 3 }, rtl: true }).setOrigin(0.5, 1).setDepth(D.bubble);
         this.armBubbles.set(a.uid, bub);
       }
       const top = this.ws(a.x, a.y, a.rise * 4.2);
@@ -941,7 +962,7 @@ export class VoyageScene extends Phaser.Scene {
       const big = f.kind === 'island' || f.kind === 'cove' || f.kind === 'lighthouse' || f.kind === 'pier';
       img.setDepth(big ? D.far - 1 : f.kind === 'whirlpool' ? D.crest + 0.5 : f.kind === 'coin' ? D.shots : this.bandDepth(f.y - w.ship.y));
       if (f.kind === 'whirlpool') img.setScale(2.2 * (1 + Math.sin(t * 2) * 0.03));
-      if (f.kind === 'reef') img.setScale(0.8 + f.variant * 0.15);
+      if (f.kind === 'reef') img.setScale((2.3 * f.r * PX_PER_M) / Math.max(1, img.frame.width));
       if (f.kind === 'crate' && f.tag === 'treasure') img.setTint(0xffe08a); else if (f.kind !== 'coin') img.clearTint();
     }
     for (const [k, img] of this.flV) if (!seen.has(k)) { img.destroy(); this.flV.delete(k); }
@@ -1032,24 +1053,34 @@ export class VoyageScene extends Phaser.Scene {
       }
       const ready = !!c.loaded && c.loadT <= 0 && !c.jam;
       const col = c.loaded ? (this.ammoColor[c.loaded] ?? 0xffffff) : 0xffffff;
-      // dotted ballistic path
-      const N = 22;
-      for (let i = 1; i <= N; i++) {
+      // ballistic path: a soft white guide with bright dots in the ammo colour
+      const N = 24;
+      const pts: { x: number; y: number }[] = [];
+      for (let i = 0; i <= N; i++) {
         const u = i / N;
-        const tt = pr.t * u;
         const x = pr.x0 + (pr.x1 - pr.x0) * u, y = pr.y0 + (pr.y1 - pr.y0) * u;
-        const q = this.ws(x, y, shotHeight(0.85, tt, pr.T));
-        if (i % 2 === 0) g.fillStyle(col, ready ? 0.85 : 0.35).fillCircle(q.x, q.y, ready ? 3 : 2.2);
+        pts.push(this.ws(x, y, shotHeight(0.85, pr.t * u, pr.T)));
+      }
+      g.lineStyle(7, 0x0b1830, ready ? 0.28 : 0.15).strokePoints(pts);
+      g.lineStyle(3, 0xffffff, ready ? 0.55 : 0.25).strokePoints(pts);
+      const phase = (t * 3) % 1;
+      for (let i = 1; i < N; i += 2) {
+        const a = pts[i]!, b = pts[i + 1] ?? a;
+        const q = { x: a.x + (b.x - a.x) * phase, y: a.y + (b.y - a.y) * phase };
+        g.fillStyle(0x0b1830, ready ? 0.7 : 0.3).fillCircle(q.x, q.y, ready ? 5 : 3.5);
+        g.fillStyle(col, ready ? 1 : 0.5).fillCircle(q.x, q.y, ready ? 3.5 : 2.5);
       }
       // predicted impact
       const hit = pr.hit;
       const end = this.ws(pr.x1, pr.y1, hit ? 0.3 : 0);
       const pulse = 1 + Math.sin(t * 8) * 0.08;
       if (hit) {
-        g.lineStyle(4, 0xffe066, 0.95).strokeEllipse(end.x, end.y, 46 * pulse, 30 * pulse);
-        g.lineStyle(2, 0xffffff, 0.9).lineBetween(end.x - 10, end.y, end.x + 10, end.y).lineBetween(end.x, end.y - 7, end.x, end.y + 7);
+        g.lineStyle(7, 0x0b1830, 0.5).strokeEllipse(end.x, end.y, 54 * pulse, 34 * pulse);
+        g.lineStyle(4, 0xffe066, 1).strokeEllipse(end.x, end.y, 54 * pulse, 34 * pulse);
+        g.lineStyle(3, 0xffffff, 1).lineBetween(end.x - 12, end.y, end.x + 12, end.y).lineBetween(end.x, end.y - 8, end.x, end.y + 8);
       } else {
-        g.lineStyle(3, 0xffffff, 0.6).strokeEllipse(end.x, end.y, 30, 18);
+        g.lineStyle(6, 0x0b1830, 0.35).strokeEllipse(end.x, end.y, 36, 22);
+        g.lineStyle(3, 0xffffff, 0.8).strokeEllipse(end.x, end.y, 36, 22);
       }
       // lead marker: where to aim for the nearest target (aim assist pulls toward it)
       if (pr.lead && !hit) {
