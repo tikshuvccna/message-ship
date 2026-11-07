@@ -103,7 +103,7 @@ export function createWorld(cfg: FullConfig, data: SimData, sched: Schedule): Wo
   const cannons = {} as Record<CannonId, Cannon>;
   for (const id of CANNON_IDS) {
     const base = id === 'cannon_bow' ? 0 : id === 'cannon_stern' ? Math.PI : id === 'cannon_far' ? Math.PI / 2 : -Math.PI / 2;
-    cannons[id] = { id, aim: base, loaded: null, loadT: 0, jam: 0, recoil: 0, fireCd: 0 };
+    cannons[id] = { id, aim: base, loaded: null, loadT: 0, charges: 0, jam: 0, recoil: 0, fireCd: 0 };
   }
   const ammoName: Record<string, string> = {};
   for (const a of data.ammo) ammoName[a.id] = a.he;

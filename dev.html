@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" href="data:,">
+  <title>Voyage dev harness</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #081a2d; overflow: hidden; font-family: Rubik, "Segoe UI", Arial, sans-serif; }
+    #game { position: absolute; inset: 0; }
+    #dbg { position: absolute; left: 8px; top: 8px; direction: ltr; color: #e8f4ff; font: 12px/1.35 Consolas, monospace;
+      background: rgba(5, 15, 30, .62); padding: 6px 8px; border-radius: 6px; pointer-events: none; white-space: pre; max-width: 46vw; }
+    #toasts { position: absolute; right: 12px; top: 10px; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; pointer-events: none; }
+    .toast { background: rgba(10, 25, 45, .85); color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 18px; }
+    .toast.good { border-right: 4px solid #7fd957; } .toast.bad { border-right: 4px solid #ff6a5a; } .toast.hint { border-right: 4px solid #ffd65a; }
+    #prompt { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); background: rgba(10,25,45,.85); color: #ffe9a8;
+      padding: 6px 16px; border-radius: 20px; font-size: 20px; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div id="game"></div>
+  <div id="dbg"></div>
+  <div id="toasts"></div>
+  <div id="prompt" hidden></div>
+  <script type="module" src="/src/dev.ts"></script>
+</body>
+</html>

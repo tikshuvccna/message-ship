@@ -69,7 +69,6 @@ def eye_noise(parent, loc, r, side=1):
                    line=False)
     sl.rotation_euler = (0, side * 0.35, 0)
     ellipsoid("pup", r * 0.22, glow("#ffe0a0", 3.0), e, loc=(0, -r * 0.55, 0), scale=(0.6, 0.3, 1.0), line=False)
-    ellipsoid("halo", r * 1.5, glow(EYE_NOISE, 1.2, alpha=0.35, soft=True), e, loc=(0, -r * 0.4, 0), line=False)
     # angry brow
     tube("brow", [Vector((-side * r * 1.1, -r * 0.5, r * 0.55)), Vector((side * r * 0.9, -r * 0.55, r * 1.05))],
          [r * 0.16], mat("#120c18", kind='flat', rim=0), e, seg=6, sub=1, line=False)
@@ -78,6 +77,9 @@ def eye_noise(parent, loc, r, side=1):
 
 def face(parent, loc, r, st, gap=1.25, iris="#2a4a7a", mouth=True, mouth_dz=-1.2, blush_c="#f08a8a", y_in=0.0):
     x, y, z = loc
+    r *= 1.25
+    gap /= 1.08
+    mouth_dz /= 1.12
     for s in (-1, 1):
         if st.noise:
             eye_noise(parent, (x + s * r * gap, y, z), r, side=s)
@@ -104,6 +106,11 @@ _FONT = {}
 
 
 def font():
+    if 'f' in _FONT and _FONT['f'] is not None:
+        try:
+            _FONT['f'].name
+        except ReferenceError:      # scene was reset
+            del _FONT['f']
     if 'f' not in _FONT:
         try:
             _FONT['f'] = bpy.data.fonts.load(FONT_PATH)
@@ -435,12 +442,12 @@ def cable_eel(st, b, cz=0.0):
     sw = 0.15 * math.sin(st.ph)
     pts = [Vector((0.3, 1.2, -0.15)), Vector((0.5, 0.6, 0.35)), Vector((0.2, 0.1, 0.9)), Vector((-0.15, -0.15, 1.45 + sw)),
            Vector((-0.1, -0.45, 1.85 + sw))]
-    tube("cable", pts, [0.2, 0.24, 0.24, 0.22, 0.2], mat(c1, kind='soft', rim=0.6, pat='stripes', color2=c2,
+    tube("cable", pts, [0.3, 0.34, 0.34, 0.3, 0.28], mat(c1, kind='soft', rim=0.6, pat='stripes', color2=c2,
                                                        P=dict(fv=6, thr=0.7, weave=False)), b, seg=16, sub=6)
-    tube("cable2", [Vector((-0.4, 1.0, -0.1)), Vector((-0.6, 1.5, 0.25)), Vector((-0.75, 2.0, -0.1))], [0.18, 0.12],
+    tube("cable2", [Vector((-0.4, 1.0, -0.1)), Vector((-0.6, 1.5, 0.25)), Vector((-0.75, 2.0, -0.1))], [0.26, 0.14],
          mat(c1, kind='soft', rim=0.6), b, seg=12, sub=4)
     hp = pivot("plug", pts[-1], b, rot=(0.25, 0, 0))
-    box("head", (0.5, 0.42, 0.55), mat("#d8dce8" if not st.noise else "#5a5866", kind='soft', rim=0.7), hp, loc=(0, -0.1, 0.25), bevel=0.08)
+    box("head", (0.62, 0.5, 0.62), mat("#d8dce8" if not st.noise else "#5a5866", kind='soft', rim=0.7), hp, loc=(0, -0.1, 0.25), bevel=0.08)
     box("clip", (0.18, 0.12, 0.25), mat("#b8c0d0" if not st.noise else "#4a4856", kind='soft'), hp, loc=(0, 0.15, 0.35), bevel=0.03)
     if st.noise:
         # torn top: frayed copper wires + sparks
@@ -701,10 +708,11 @@ def frame_turtle(st, b):
                            P=dict(scale=3.5, thr=0.5)), shell, scale=(1.0, 1.2, 0.6),
          deform=lambda p: Vector((p.x, p.y, max(p.z, -0.2))))
     # header band (front) + trailer band (back): coloured frame bands
-    ring_tube("header", (0, -0.55, 0.08), 0.7, 0.07, mat("#ff8a4a" if not st.noise else "#5a3a3a", kind='soft', rim=0.5), shell, axis='y',
-              seg=28, tseg=6)
-    ring_tube("trailer", (0, 0.75, 0.05), 0.55, 0.07, mat("#4ad6c8" if not st.noise else "#3a4a4a", kind='soft', rim=0.5), shell,
-              axis='y', seg=28, tseg=6)
+    for y0, col in ((-0.5, "#ff8a4a" if not st.noise else "#5a3a3a"), (0.62, "#4ad6c8" if not st.noise else "#3a4a4a")):
+        f = math.sqrt(max(0.0, 1 - (y0 / 0.96) ** 2))
+        ax, cz = 0.8 * f + 0.03, 0.48 * f + 0.03
+        pts = [Vector((ax * math.cos(t), y0, max(-0.12, cz * math.sin(t)))) for t in [-0.15 + (math.pi + 0.3) * i / 24 for i in range(25)]]
+        tube("band", pts, [0.065], mat(col, kind='soft', rim=0.5), shell, seg=8, sub=1)
     ring_tube("rim", (0, 0, -0.08), 0.82, 0.06, mat(c2, kind='soft', rim=0.5), shell, axis='z', seg=36, tseg=6)
     if st.noise:
         for i in range(4):
@@ -740,8 +748,6 @@ def bit_swarm(st, b):
         else:
             ellipsoid("e", 0.04, mat("#1a1220", kind='flat'), fish, loc=(-0.05, -0.07, 0.06), line=False)
             ellipsoid("eh", 0.014, glow("#ffffff", 1), fish, loc=(-0.06, -0.1, 0.075), line=False)
-    if not st.noise:
-        ellipsoid("swarmglow", 0.8, glow("#fff6a0", 0.8, alpha=0.25, soft=True), b, loc=(0, 0, 0.6), line=False)
 
 
 BUILDERS = dict(garble_squid=garble_squid, static_jelly=static_jelly, tide_whale=tide_whale, echo_gulls=echo_gulls,
@@ -751,7 +757,7 @@ BUILDERS = dict(garble_squid=garble_squid, static_jelly=static_jelly, tide_whale
                 segment_barnacle=segment_barnacle, packet_ray=packet_ray, frame_turtle=frame_turtle, bit_swarm=bit_swarm)
 # visual radius of each model in its own units (so radius/56 maps the hit circle)
 MODEL_R = dict(garble_squid=1.15, static_jelly=1.0, tide_whale=1.9, echo_gulls=1.1, lost_bottle=0.95, paper_crab=1.0,
-               cable_eel=1.1, frame_crab=1.0, ip_hermit=0.8, port_urchin=1.05, session_snail=0.9, cipher_jelly=1.0,
+               cable_eel=0.9, frame_crab=1.0, ip_hermit=0.8, port_urchin=1.05, session_snail=0.9, cipher_jelly=1.0,
                web_gull=1.1, raw_pearl=0.7, segment_barnacle=0.9, packet_ray=1.3, frame_turtle=1.1, bit_swarm=0.75)
 
 
@@ -770,7 +776,7 @@ def render_creature(job, cid, radius):
             nm = f"{cid}_{state}_{f}"
             extra = dict(radiusPx=radius, facing="left")
             if state == 'noise':
-                extra['glitch'] = [hash(cid) % 1000, f]
+                extra['glitch'] = [sum(ord(ch) for ch in cid), f]
             job.shoot(nm, (size, size), (size // 2, int(size * 0.74)), line_t=0.011 * k, extra=extra,
                       shadow=None)
 
@@ -800,3 +806,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+

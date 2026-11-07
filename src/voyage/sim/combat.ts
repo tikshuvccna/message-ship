@@ -147,7 +147,9 @@ export function fireCannon(w: World, id: CannonId): boolean {
     w.shots.push({ uid: u, ammo, x: m.x, y: m.y, prevX: m.x, prevY: m.y, vx, vy, t: 0, T: BALL_RANGE / BALL_SPEED, z0: 0.85, cannon: id, power: w.stats.shotPower || 1 });
     emit(w, { e: 'shot', uid: u, cannon: id, ammo });
   }
-  c.loaded = null;
+  c.charges--;
+  if (c.charges <= 0) { c.loaded = null; c.charges = 0; }
+  else c.loadT = Math.max(0.15, (w.stats.reloadSec || 1.6) * 0.45);
   c.recoil = 1;
   c.fireCd = 0.25;
   w.acc.shots++;
@@ -328,7 +330,7 @@ export function stepBolts(w: World, dt: number): void {
       b.life = 0;
       const p = hullContact(w, b.x, b.y);
       emit(w, { e: 'boltpop', x: b.x, y: b.y });
-      if (hullHit(w, 6, p.x, p.y)) {
+      if (hullHit(w, 4, p.x, p.y)) {
         sfx(w, 'hit_wrong', p.x);
         const r = w.rng.next();
         if (r < 0.3) addLeak(w, p.x, p.y * 0.85);

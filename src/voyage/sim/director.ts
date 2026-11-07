@@ -83,14 +83,14 @@ export function buildSchedule(cfg: VoyageConfig & { difficulty?: number; bottleI
       let oi = 0;
       for (let w = 0; w < n; w++) {
         const at = 3 + (w * (D * 0.72)) / n;
-        const budget = 1 + w * 0.65 + diff * 1.6;
+        const budget = 0.8 + w * 0.6 + diff * 1.4;
         const spawns: WaveSpawn[] = [];
         let used = 0;
         let guard = 0;
         while (used < budget && guard++ < 12) {
           const def = oi < order.length ? (order[oi++] as CreatureDef) : rng.pick(pool);
           const swarm = def.behavior === 'swarm';
-          const count = swarm ? 3 + Math.round(diff * 2) : 1;
+          const count = swarm ? 3 + Math.round(diff * 1.4) : 1;
           const from = rng.pick(SIDES);
           spawns.push({ id: def.id, count, side: from === 'near' ? -1 : 1, from });
           used += swarm ? 1.3 : def.hp >= 10 ? 1.8 : 1;

@@ -1,0 +1,110 @@
+{
+ "frames": {
+  "float_0": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 128
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 128
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 128
+   }
+  },
+  "float_1": {
+   "frame": {
+    "x": 128,
+    "y": 0,
+    "w": 128,
+    "h": 128
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 128
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 128
+   }
+  },
+  "float_2": {
+   "frame": {
+    "x": 256,
+    "y": 0,
+    "w": 128,
+    "h": 128
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 128
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 128
+   }
+  },
+  "float_3": {
+   "frame": {
+    "x": 384,
+    "y": 0,
+    "w": 128,
+    "h": 128
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 128
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 128
+   }
+  }
+ },
+ "anims": {
+  "float": {
+   "frames": [
+    "float_0",
+    "float_1",
+    "float_2",
+    "float_3"
+   ],
+   "frameRate": 6,
+   "repeat": -1
+  }
+ },
+ "meta": {
+  "app": "message-ship art pipeline",
+  "image": "bit.png",
+  "size": {
+   "w": 512,
+   "h": 128
+  },
+  "scale": "1",
+  "origin": {
+   "x": 0.5,
+   "y": 0.859375
+  },
+  "note": "Bit hovers ~1.25 units above the ground point (64,110); frame 2 smiles. Add lantern_glow (ADD) behind."
+ }
+}

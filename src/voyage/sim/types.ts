@@ -39,6 +39,7 @@ export interface Cannon {
   aim: number;               // absolute angle (ship-local == world, ship never yaws)
   loaded: AmmoId | null;
   loadT: number;             // seconds left until ready (0 = ready if loaded)
+  charges: number;           // light shots left from the loaded ball
   jam: number;               // uid of a boarded creature jamming it (0 = none)
   recoil: number;            // 0..1 display
   fireCd: number;

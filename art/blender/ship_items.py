@@ -1,4 +1,4 @@
-﻿"""Ship atlas: mast, sails, stations, props, flags, fx (called from ship.py)."""
+"""Ship atlas: mast, sails, stations, props, flags, fx (called from ship.py)."""
 import math
 import os
 import random
@@ -354,7 +354,6 @@ def build_barrel_group(angle_deg, yoke=True, elev=7.0):
              line=False)
     ring_tube("mz_ring", (cx + 0.32, 0, 0), 0.125, 0.026, g, tp, axis='x', seg=20, tseg=5, line=False)
     ellipsoid("mz_core", 0.08, glow("#fff6d0", strength=3.2), tp, loc=(cx + 0.16, 0, 0), line=False)
-    ellipsoid("mz_halo", 0.3, glow("#ffd27a", strength=1.0, alpha=0.3, soft=True), tp, loc=(cx + 0.18, 0, 0), line=False)
     return root
 
 

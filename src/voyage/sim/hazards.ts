@@ -59,7 +59,7 @@ export function stepFloaters(w: World, dt: number): void {
         if (e < 1 && f.value <= 0) {
           f.value = 1.6;
           const p = hullContact(w, f.x, f.y);
-          hullHit(w, 10, p.x, p.y);
+          hullHit(w, 6, p.x, p.y);
           addLeak(w, p.x, p.y * 0.75);
           const away = sy >= f.y ? 1 : -1;
           pushShip(w, away * 3.2);
@@ -101,7 +101,7 @@ export function stepDeckHazards(w: World, dt: number): void {
   for (const f of w.fires) {
     f.level = Math.min(1, f.level + (rainy ? 0.02 : 0.06) * dt);
     if (w.ship.sinking < 0) {
-      w.ship.hull = Math.max(0, w.ship.hull - 0.6 * f.level * dt);
+      w.ship.hull = Math.max(0, w.ship.hull - 0.35 * f.level * dt);
     }
     if (f.level >= 1) {
       f.spreadT += dt;

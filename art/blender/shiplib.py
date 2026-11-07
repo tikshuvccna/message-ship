@@ -156,7 +156,7 @@ def ring_tube(name, center, radius, r, material, parent=None, axis='y', seg=28, 
     return tube(name, pts, [r], material, parent, seg=tseg, sub=1, caps=False, line=line)
 
 
-def lantern(name, loc, parent=None, scale=1.0, glow_col="#ffd27a", body="#e2a844", halo=True):
+def lantern(name, loc, parent=None, scale=1.0, glow_col="#ffd27a", body="#e2a844", halo=False):
     """Little brass lantern with a glowing glass body. loc = base centre."""
     root = pivot(name, loc, parent)
     s = scale

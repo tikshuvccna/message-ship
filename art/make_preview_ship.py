@@ -1,4 +1,4 @@
-﻿"""Composite preview of the ship atlas with stations at the contract coordinates and characters for scale.
+"""Composite preview of the ship atlas with stations at the contract coordinates and characters for scale.
 python art/make_preview_ship.py  -> art/preview_ship.png (1x) and art/preview_ship_big.png (2x crop)"""
 import json
 import math
@@ -60,10 +60,11 @@ def main():
         bg.alpha_composite(img, (int(round(O[0] + px - a["x"])), int(round(O[1] + py - a["y"]))))
 
     put("ship_shadow", 0, 0)
+    put("waterline_foam", 0, 0)
     put("hull", 0, 0)
     ammo = ["#ffb84a", "#4ad6c8", "#8f7bff", "#ff7f6e", "#7fd957", "#ffb84a", "#4ad6c8"]
     chars = {}
-    for nm in ("skin_girl_sea", "skin_boy_navy", "apprentice_girl"):
+    for nm in ("hero_girl", "hero_boy", "naama", "talia"):
         chars[nm] = atlas(os.path.join(A, "characters", nm))
     sprites = []   # (y, callable)
 
@@ -94,10 +95,10 @@ def main():
     S(2.75, lambda: put("crate_c", 3.0, 2.75))
     S(-1.6, lambda: put("leak_1", 2.6, -1.6))
     S(1.0, lambda: put("flame_2", -1.9, 1.0))
-    S(0.7, lambda: put("idle_S_0", -6.2, 0.7, atl=chars["skin_girl_sea"]))
-    S(-0.7, lambda: put("idle_E_0", 5.9, -0.6, atl=chars["skin_boy_navy"]))
-    S(2.2, lambda: put("walk_W_2", -2.6, 2.2, atl=chars["apprentice_girl"]))
-    S(-2.4, lambda: put("idle_SE_0", -0.3, -2.4, atl=chars["skin_boy_navy"]))
+    S(0.7, lambda: put("idle_S_0", -6.2, 0.7, atl=chars["naama"]))
+    S(-0.7, lambda: put("idle_E_0", 5.9, -0.6, atl=chars["hero_boy"]))
+    S(2.2, lambda: put("walk_W_2", -2.6, 2.2, atl=chars["hero_girl"]))
+    S(-2.4, lambda: put("idle_SE_0", -0.3, -2.4, atl=chars["talia"]))
     for y, fn in sorted(sprites, key=lambda t: -t[0]):
         fn()
     put("hull_front", 0, 0)

@@ -79,7 +79,7 @@ export function stepShip(w: World, dt: number): void {
   // flooding: leaks add water, the pump removes a little
   let inflow = 0;
   for (const l of w.leaks) inflow += 0.012 * l.size;
-  const pump = 0.004 * (w.stats.repairSpeed || 1);
+  const pump = 0.005 * (w.stats.repairSpeed || 1);
   s.water = clamp(s.water + (inflow - pump) * dt, 0, 1);
 }
 

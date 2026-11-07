@@ -1,0 +1,810 @@
+{
+ "frames": {
+  "kraken_head_p1_0": {
+   "frame": {
+    "x": 913,
+    "y": 0,
+    "w": 243,
+    "h": 235
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 243,
+    "h": 235
+   },
+   "sourceSize": {
+    "w": 243,
+    "h": 235
+   },
+   "anchor": {
+    "x": 0.46091,
+    "y": 0.8383
+   },
+   "anchorPx": {
+    "x": 112,
+    "y": 197
+   },
+   "note": "anchor = water point under the head"
+  },
+  "kraken_head_p1_1": {
+   "frame": {
+    "x": 1158,
+    "y": 0,
+    "w": 243,
+    "h": 235
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 243,
+    "h": 235
+   },
+   "sourceSize": {
+    "w": 243,
+    "h": 235
+   },
+   "anchor": {
+    "x": 0.46091,
+    "y": 0.8383
+   },
+   "anchorPx": {
+    "x": 112,
+    "y": 197
+   },
+   "note": "anchor = water point under the head"
+  },
+  "kraken_head_p2_0": {
+   "frame": {
+    "x": 1403,
+    "y": 0,
+    "w": 235,
+    "h": 235
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 235,
+    "h": 235
+   },
+   "sourceSize": {
+    "w": 235,
+    "h": 235
+   },
+   "anchor": {
+    "x": 0.4766,
+    "y": 0.8383
+   },
+   "anchorPx": {
+    "x": 112,
+    "y": 197
+   },
+   "note": "anchor = water point under the head"
+  },
+  "kraken_head_p2_1": {
+   "frame": {
+    "x": 1640,
+    "y": 0,
+    "w": 234,
+    "h": 235
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 234,
+    "h": 235
+   },
+   "sourceSize": {
+    "w": 234,
+    "h": 235
+   },
+   "anchor": {
+    "x": 0.5,
+    "y": 0.8383
+   },
+   "anchorPx": {
+    "x": 117,
+    "y": 197
+   },
+   "note": "anchor = water point under the head"
+  },
+  "kraken_head_p3_0": {
+   "frame": {
+    "x": 231,
+    "y": 0,
+    "w": 230,
+    "h": 313
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 230,
+    "h": 313
+   },
+   "sourceSize": {
+    "w": 230,
+    "h": 313
+   },
+   "anchor": {
+    "x": 0.48696,
+    "y": 0.87859
+   },
+   "anchorPx": {
+    "x": 112,
+    "y": 275
+   },
+   "note": "anchor = water point under the head"
+  },
+  "kraken_head_p3_1": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 229,
+    "h": 318
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 229,
+    "h": 318
+   },
+   "sourceSize": {
+    "w": 229,
+    "h": 318
+   },
+   "anchor": {
+    "x": 0.48908,
+    "y": 0.8805
+   },
+   "anchorPx": {
+    "x": 112,
+    "y": 280
+   },
+   "note": "anchor = water point under the head"
+  },
+  "kraken_head_friend_0": {
+   "frame": {
+    "x": 463,
+    "y": 0,
+    "w": 223,
+    "h": 241
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 223,
+    "h": 241
+   },
+   "sourceSize": {
+    "w": 223,
+    "h": 241
+   },
+   "anchor": {
+    "x": 0.4843,
+    "y": 0.84647
+   },
+   "anchorPx": {
+    "x": 108,
+    "y": 204
+   },
+   "note": "anchor = water point under the head"
+  },
+  "kraken_head_friend_1": {
+   "frame": {
+    "x": 688,
+    "y": 0,
+    "w": 223,
+    "h": 241
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 223,
+    "h": 241
+   },
+   "sourceSize": {
+    "w": 223,
+    "h": 241
+   },
+   "anchor": {
+    "x": 0.4843,
+    "y": 0.84647
+   },
+   "anchorPx": {
+    "x": 108,
+    "y": 204
+   },
+   "note": "anchor = water point under the head"
+  },
+  "kraken_arm_p1_addr_0": {
+   "frame": {
+    "x": 357,
+    "y": 320,
+    "w": 105,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 105,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 105,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.27619,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p1_addr_1": {
+   "frame": {
+    "x": 464,
+    "y": 320,
+    "w": 105,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 105,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 105,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.27619,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p1_code_0": {
+   "frame": {
+    "x": 571,
+    "y": 320,
+    "w": 122,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 122,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 122,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.2377,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p1_code_1": {
+   "frame": {
+    "x": 695,
+    "y": 320,
+    "w": 93,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 93,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 93,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.35484,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 33,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p1_fmt_0": {
+   "frame": {
+    "x": 790,
+    "y": 320,
+    "w": 123,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 123,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 123,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.23577,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p1_fmt_1": {
+   "frame": {
+    "x": 915,
+    "y": 320,
+    "w": 91,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 91,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 91,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.36264,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 33,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p1_size_0": {
+   "frame": {
+    "x": 1008,
+    "y": 320,
+    "w": 108,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 108,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 108,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.26852,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p1_size_1": {
+   "frame": {
+    "x": 1118,
+    "y": 320,
+    "w": 102,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 102,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 102,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.28431,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p1_time_0": {
+   "frame": {
+    "x": 1222,
+    "y": 320,
+    "w": 93,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 93,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 93,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.34409,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 32,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p1_time_1": {
+   "frame": {
+    "x": 1317,
+    "y": 320,
+    "w": 120,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 120,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 120,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.24167,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p2_0": {
+   "frame": {
+    "x": 137,
+    "y": 320,
+    "w": 108,
+    "h": 185
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 108,
+    "h": 185
+   },
+   "sourceSize": {
+    "w": 108,
+    "h": 185
+   },
+   "anchor": {
+    "x": 0.2963,
+    "y": 0.89189
+   },
+   "anchorPx": {
+    "x": 32,
+    "y": 165
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p2_1": {
+   "frame": {
+    "x": 247,
+    "y": 320,
+    "w": 108,
+    "h": 185
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 108,
+    "h": 185
+   },
+   "sourceSize": {
+    "w": 108,
+    "h": 185
+   },
+   "anchor": {
+    "x": 0.2963,
+    "y": 0.89189
+   },
+   "anchorPx": {
+    "x": 32,
+    "y": 165
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p3_0": {
+   "frame": {
+    "x": 1439,
+    "y": 320,
+    "w": 122,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 122,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 122,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.2377,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_p3_1": {
+   "frame": {
+    "x": 1563,
+    "y": 320,
+    "w": 122,
+    "h": 184
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 122,
+    "h": 184
+   },
+   "sourceSize": {
+    "w": 122,
+    "h": 184
+   },
+   "anchor": {
+    "x": 0.2377,
+    "y": 0.8913
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 164
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_friend_0": {
+   "frame": {
+    "x": 1876,
+    "y": 0,
+    "w": 135,
+    "h": 196
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 135,
+    "h": 196
+   },
+   "sourceSize": {
+    "w": 135,
+    "h": 196
+   },
+   "anchor": {
+    "x": 0.21481,
+    "y": 0.89796
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 176
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  },
+  "kraken_arm_friend_1": {
+   "frame": {
+    "x": 0,
+    "y": 320,
+    "w": 135,
+    "h": 196
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 135,
+    "h": 196
+   },
+   "sourceSize": {
+    "w": 135,
+    "h": 196
+   },
+   "anchor": {
+    "x": 0.21481,
+    "y": 0.89796
+   },
+   "anchorPx": {
+    "x": 29,
+    "y": 176
+   },
+   "note": "anchor = water point at the arm base; flipX for the other side"
+  }
+ },
+ "meta": {
+  "app": "message-ship art pipeline",
+  "version": "1.0",
+  "image": "kraken.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 2011,
+   "h": 516
+  },
+  "scale": "1",
+  "note": "frames[*].anchor = ground point (normalised): setOrigin(anchor.x, anchor.y). Projection: sx = x*56, sy = -y*32.12 - z*45.87 (ortho 35 deg)."
+ },
+ "anims": {
+  "kraken_head_p1": {
+   "frames": [
+    "kraken_head_p1_0",
+    "kraken_head_p1_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_head_p2": {
+   "frames": [
+    "kraken_head_p2_0",
+    "kraken_head_p2_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_head_p3": {
+   "frames": [
+    "kraken_head_p3_0",
+    "kraken_head_p3_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_head_friend": {
+   "frames": [
+    "kraken_head_friend_0",
+    "kraken_head_friend_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_arm_p1_addr": {
+   "frames": [
+    "kraken_arm_p1_addr_0",
+    "kraken_arm_p1_addr_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_arm_p1_code": {
+   "frames": [
+    "kraken_arm_p1_code_0",
+    "kraken_arm_p1_code_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_arm_p1_fmt": {
+   "frames": [
+    "kraken_arm_p1_fmt_0",
+    "kraken_arm_p1_fmt_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_arm_p1_size": {
+   "frames": [
+    "kraken_arm_p1_size_0",
+    "kraken_arm_p1_size_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_arm_p1_time": {
+   "frames": [
+    "kraken_arm_p1_time_0",
+    "kraken_arm_p1_time_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_arm_p2": {
+   "frames": [
+    "kraken_arm_p2_0",
+    "kraken_arm_p2_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_arm_p3": {
+   "frames": [
+    "kraken_arm_p3_0",
+    "kraken_arm_p3_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  },
+  "kraken_arm_friend": {
+   "frames": [
+    "kraken_arm_friend_0",
+    "kraken_arm_friend_1"
+   ],
+   "frameRate": 3,
+   "repeat": -1
+  }
+ }
+}

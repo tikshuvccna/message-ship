@@ -49,12 +49,71 @@ def shadow_blob(size, center, rx, ry, alpha=0.32, blur=3):
     return img
 
 
+_FONTS = {}
+
+
+def _font(size):
+    from PIL import ImageFont
+    if size not in _FONTS:
+        try:
+            _FONTS[size] = ImageFont.truetype(r"C:\Windows\Fonts\arialbd.ttf", size)
+        except Exception:
+            _FONTS[size] = ImageFont.load_default()
+    return _FONTS[size]
+
+
+def glitch(im, seed, frame):
+    """'Noise' look: RGB split, a few sliced bands shifted sideways, letters flaking off the silhouette."""
+    import random
+    from PIL import ImageChops, ImageDraw
+    rnd = random.Random(seed * 7 + 1)
+    w, h = im.size
+    r, g, b, a = im.split()
+    sh = 2
+    r = ImageChops.offset(r, -sh, 0)
+    b = ImageChops.offset(b, sh, 0)
+    ar = ImageChops.offset(a, -sh, 0)
+    ab = ImageChops.offset(a, sh, 0)
+    a2 = ImageChops.lighter(a, ImageChops.lighter(ar, ab))
+    out = Image.merge("RGBA", (r, g, b, a2))
+    # sliced bands (different per frame)
+    rf = random.Random(seed * 13 + frame * 101)
+    bb = a.getbbox() or (0, 0, w, h)
+    for _ in range(3):
+        y0 = rf.randint(bb[1], max(bb[1] + 1, bb[3] - 4))
+        hh = rf.randint(2, 5)
+        dx = rf.choice((-5, -4, -3, 3, 4, 6))
+        band = out.crop((0, y0, w, y0 + hh))
+        out.paste((0, 0, 0, 0), (0, y0, w, y0 + hh))
+        out.alpha_composite(band, (dx, y0)) if 0 <= dx else out.alpha_composite(band.crop((-dx, 0, w, hh)), (0, y0))
+    # flaking letters: start on the upper silhouette, drift up/out between the frames
+    d = ImageDraw.Draw(out)
+    chars = "AZQ#?%&7@$kxRG01"
+    cx = (bb[0] + bb[2]) / 2
+    n = 5 + rnd.randint(0, 3)
+    for i in range(n):
+        x = rnd.uniform(bb[0], bb[2])
+        y = bb[1] + rnd.uniform(0, (bb[3] - bb[1]) * 0.5)
+        drift = 6 + 7 * ((frame + i * 0.37) % 1.0) + frame * 5
+        x += (x - cx) * 0.12 + rnd.uniform(-3, 3)
+        y -= drift
+        sz = rnd.randint(9, 14)
+        col = rnd.choice(((255, 122, 58), (255, 170, 80), (150, 120, 190), (220, 80, 60)))
+        al = int(255 * (0.95 - 0.35 * frame - 0.25 * ((i * 0.37) % 1.0)))
+        ch = rnd.choice(chars)
+        d.text((x + 1, y + 1), ch, font=_font(sz), fill=(30, 18, 40, al))
+        d.text((x, y), ch, font=_font(sz), fill=col + (al,))
+    return out
+
+
 def load_frame(gdir, name, m):
     p = os.path.join(gdir, m.get("file", name + ".png"))
     if m.get("pil"):
         im = Image.open(p).convert("RGBA")
     else:
         im = finish(p, ssaa=m.get("ssaa", 4), outline=m.get("outline", True))
+    if m.get("glitch") is not None:
+        im = glitch(im, m["glitch"][0], m["glitch"][1])
     if m.get("shadow"):
         rx, ry = m["shadow"][:2]
         dx = m["shadow"][2] if len(m["shadow"]) > 2 else 0
@@ -103,7 +162,7 @@ def pack(group, rawdir, maxw=2048, dest=None, order=None):
     used_w = max(pos[n][0] + im.width for n, im, a, m in items)
     sheet = Image.new("RGBA", (used_w, H), (0, 0, 0, 0))
     frames = {}
-    skip = {"cell", "anchor", "ssaa", "file", "pil", "outline", "shadow", "notrim"}
+    skip = {"cell", "anchor", "ssaa", "file", "pil", "outline", "shadow", "notrim", "glitch"}
     for nm, im, (ax, ay), m in items:
         px, py = pos[nm]
         sheet.alpha_composite(im, (px, py))
@@ -147,3 +206,5 @@ if __name__ == "__main__":
     g, raw = sys.argv[1], sys.argv[2]
     mw = int(sys.argv[sys.argv.index("--max") + 1]) if "--max" in sys.argv else 2048
     pack(g, raw, mw)
+
+

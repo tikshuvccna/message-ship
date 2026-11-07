@@ -4,7 +4,7 @@
    "frame": {
     "x": 880,
     "y": 480,
-    "w": 1117,
+    "w": 1108,
     "h": 312
    },
    "rotated": false,
@@ -12,27 +12,27 @@
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 1117,
+    "w": 1108,
     "h": 312
    },
    "sourceSize": {
-    "w": 1117,
+    "w": 1108,
     "h": 312
    },
    "anchor": {
-    "x": 0.46732,
+    "x": 0.463,
     "y": 0.52564
    },
    "anchorPx": {
-    "x": 522,
+    "x": 513,
     "y": 164
    },
    "note": "origin = ship centre (0,0) on the deck (z=0)"
   },
   "hull_front": {
    "frame": {
-    "x": 979,
-    "y": 827,
+    "x": 0,
+    "y": 1068,
     "w": 1003,
     "h": 197
    },
@@ -183,7 +183,7 @@
   },
   "wheel": {
    "frame": {
-    "x": 130,
+    "x": 1135,
     "y": 1068,
     "w": 84,
     "h": 92
@@ -216,7 +216,7 @@
   },
   "wheel_base": {
    "frame": {
-    "x": 974,
+    "x": 1964,
     "y": 1068,
     "w": 61,
     "h": 76
@@ -244,8 +244,8 @@
   },
   "wheel_disc_0": {
    "frame": {
-    "x": 1091,
-    "y": 1068,
+    "x": 54,
+    "y": 1267,
     "w": 84,
     "h": 71
    },
@@ -272,8 +272,8 @@
   },
   "wheel_disc_1": {
    "frame": {
-    "x": 1349,
-    "y": 1068,
+    "x": 312,
+    "y": 1267,
     "w": 84,
     "h": 70
    },
@@ -300,8 +300,8 @@
   },
   "wheel_disc_2": {
    "frame": {
-    "x": 1177,
-    "y": 1068,
+    "x": 140,
+    "y": 1267,
     "w": 84,
     "h": 71
    },
@@ -328,8 +328,8 @@
   },
   "wheel_disc_3": {
    "frame": {
-    "x": 1633,
-    "y": 1068,
+    "x": 596,
+    "y": 1267,
     "w": 82,
     "h": 69
    },
@@ -356,8 +356,8 @@
   },
   "wheel_disc_4": {
    "frame": {
-    "x": 161,
-    "y": 1198,
+    "x": 883,
+    "y": 1267,
     "w": 80,
     "h": 67
    },
@@ -384,8 +384,8 @@
   },
   "wheel_disc_5": {
    "frame": {
-    "x": 1717,
-    "y": 1068,
+    "x": 680,
+    "y": 1267,
     "w": 82,
     "h": 69
    },
@@ -412,8 +412,8 @@
   },
   "wheel_disc_6": {
    "frame": {
-    "x": 1263,
-    "y": 1068,
+    "x": 226,
+    "y": 1267,
     "w": 84,
     "h": 71
    },
@@ -440,8 +440,8 @@
   },
   "wheel_disc_7": {
    "frame": {
-    "x": 1435,
-    "y": 1068,
+    "x": 398,
+    "y": 1267,
     "w": 84,
     "h": 70
    },
@@ -468,8 +468,8 @@
   },
   "cannon_base": {
    "frame": {
-    "x": 1215,
-    "y": 1198,
+    "x": 129,
+    "y": 1343,
     "w": 74,
     "h": 55
    },
@@ -500,159 +500,159 @@
   },
   "cannon_barrel": {
    "frame": {
-    "x": 379,
-    "y": 1269,
-    "w": 112,
-    "h": 40
+    "x": 1292,
+    "y": 1343,
+    "w": 106,
+    "h": 32
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 112,
-    "h": 40
+    "w": 106,
+    "h": 32
    },
    "sourceSize": {
-    "w": 112,
-    "h": 40
+    "w": 106,
+    "h": 32
    },
    "anchor": {
-    "x": 0.30357,
+    "x": 0.32075,
     "y": 0.5
    },
    "anchorPx": {
     "x": 34,
-    "y": 20
+    "y": 16
    },
    "note": "points +x (screen right); anchor = trunnion pivot; rotate in 2D"
   },
   "cannon_barrel_00": {
    "frame": {
-    "x": 1627,
-    "y": 1198,
-    "w": 111,
-    "h": 52
+    "x": 835,
+    "y": 1343,
+    "w": 106,
+    "h": 47
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 111,
-    "h": 52
+    "w": 106,
+    "h": 47
    },
    "sourceSize": {
-    "w": 111,
-    "h": 52
+    "w": 106,
+    "h": 47
    },
    "anchor": {
-    "x": 0.30631,
-    "y": 1.07692
+    "x": 0.32075,
+    "y": 1.08511
    },
    "anchorPx": {
     "x": 34,
-    "y": 56
+    "y": 51
    },
    "angleDeg": 0.0,
    "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
   },
   "cannon_barrel_01": {
    "frame": {
-    "x": 1801,
-    "y": 1068,
-    "w": 105,
-    "h": 69
+    "x": 1113,
+    "y": 1267,
+    "w": 101,
+    "h": 65
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 105,
-    "h": 69
+    "w": 101,
+    "h": 65
    },
    "sourceSize": {
-    "w": 105,
-    "h": 69
+    "w": 101,
+    "h": 65
    },
    "anchor": {
-    "x": 0.30476,
-    "y": 0.98551
+    "x": 0.31683,
+    "y": 0.98462
    },
    "anchorPx": {
     "x": 32,
-    "y": 68
+    "y": 64
    },
    "angleDeg": 22.5,
    "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
   },
   "cannon_barrel_02": {
    "frame": {
-    "x": 630,
+    "x": 1738,
     "y": 1068,
-    "w": 86,
-    "h": 81
+    "w": 83,
+    "h": 77
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 86,
-    "h": 81
+    "w": 83,
+    "h": 77
    },
    "sourceSize": {
-    "w": 86,
-    "h": 81
+    "w": 83,
+    "h": 77
    },
    "anchor": {
-    "x": 0.30233,
-    "y": 0.97531
+    "x": 0.31325,
+    "y": 0.97403
    },
    "anchorPx": {
     "x": 26,
-    "y": 79
+    "y": 75
    },
    "angleDeg": 45.0,
    "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
   },
   "cannon_barrel_03": {
    "frame": {
-    "x": 352,
+    "x": 1499,
     "y": 1068,
-    "w": 66,
-    "h": 87
+    "w": 62,
+    "h": 84
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 66,
-    "h": 87
+    "w": 62,
+    "h": 84
    },
    "sourceSize": {
-    "w": 66,
-    "h": 87
+    "w": 62,
+    "h": 84
    },
    "anchor": {
-    "x": 0.36364,
-    "y": 0.98851
+    "x": 0.3871,
+    "y": 0.9881
    },
    "anchorPx": {
     "x": 24,
-    "y": 86
+    "y": 83
    },
    "angleDeg": 67.5,
    "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
   },
   "cannon_barrel_04": {
    "frame": {
-    "x": 310,
+    "x": 1457,
     "y": 1068,
     "w": 40,
-    "h": 88
+    "h": 85
    },
    "rotated": false,
    "trimmed": false,
@@ -660,148 +660,148 @@
     "x": 0,
     "y": 0,
     "w": 40,
-    "h": 88
+    "h": 85
    },
    "sourceSize": {
     "w": 40,
-    "h": 88
+    "h": 85
    },
    "anchor": {
     "x": 0.5,
-    "y": 1.01136
+    "y": 1.01176
    },
    "anchorPx": {
     "x": 20,
-    "y": 89
+    "y": 86
    },
    "angleDeg": 90.0,
    "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
   },
   "cannon_barrel_05": {
    "frame": {
-    "x": 420,
+    "x": 1563,
     "y": 1068,
-    "w": 66,
-    "h": 87
+    "w": 61,
+    "h": 84
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 66,
-    "h": 87
+    "w": 61,
+    "h": 84
    },
    "sourceSize": {
-    "w": 66,
-    "h": 87
+    "w": 61,
+    "h": 84
    },
    "anchor": {
-    "x": 0.63636,
-    "y": 0.98851
+    "x": 0.60656,
+    "y": 0.9881
    },
    "anchorPx": {
-    "x": 42,
-    "y": 86
+    "x": 37,
+    "y": 83
    },
    "angleDeg": 112.5,
    "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
   },
   "cannon_barrel_06": {
    "frame": {
-    "x": 718,
+    "x": 1823,
     "y": 1068,
-    "w": 86,
-    "h": 81
+    "w": 83,
+    "h": 77
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 86,
-    "h": 81
+    "w": 83,
+    "h": 77
    },
    "sourceSize": {
-    "w": 86,
-    "h": 81
+    "w": 83,
+    "h": 77
    },
    "anchor": {
-    "x": 0.69767,
-    "y": 0.97531
+    "x": 0.68675,
+    "y": 0.97403
    },
    "anchorPx": {
-    "x": 60,
-    "y": 79
+    "x": 57,
+    "y": 75
    },
    "angleDeg": 135.0,
    "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
   },
   "cannon_barrel_07": {
    "frame": {
-    "x": 1908,
-    "y": 1068,
-    "w": 105,
-    "h": 69
+    "x": 1216,
+    "y": 1267,
+    "w": 101,
+    "h": 65
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 105,
-    "h": 69
+    "w": 101,
+    "h": 65
    },
    "sourceSize": {
-    "w": 105,
-    "h": 69
+    "w": 101,
+    "h": 65
    },
    "anchor": {
-    "x": 0.69524,
-    "y": 0.98551
+    "x": 0.68317,
+    "y": 0.98462
    },
    "anchorPx": {
-    "x": 73,
-    "y": 68
+    "x": 69,
+    "y": 64
    },
    "angleDeg": 157.5,
    "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
   },
   "cannon_barrel_08": {
    "frame": {
-    "x": 1740,
-    "y": 1198,
-    "w": 111,
-    "h": 52
+    "x": 943,
+    "y": 1343,
+    "w": 106,
+    "h": 47
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 111,
-    "h": 52
+    "w": 106,
+    "h": 47
    },
    "sourceSize": {
-    "w": 111,
-    "h": 52
+    "w": 106,
+    "h": 47
    },
    "anchor": {
-    "x": 0.69369,
-    "y": 1.07692
+    "x": 0.67925,
+    "y": 1.08511
    },
    "anchorPx": {
-    "x": 77,
-    "y": 56
+    "x": 72,
+    "y": 51
    },
    "angleDeg": 180.0,
    "note": "world aim angle (0=+x bow, 90=+y far); anchor = station ground point"
   },
   "cannon_barrel_09": {
    "frame": {
-    "x": 0,
-    "y": 1269,
-    "w": 105,
+    "x": 629,
+    "y": 1343,
+    "w": 101,
     "h": 48
    },
    "rotated": false,
@@ -809,19 +809,19 @@
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 105,
+    "w": 101,
     "h": 48
    },
    "sourceSize": {
-    "w": 105,
+    "w": 101,
     "h": 48
    },
    "anchor": {
-    "x": 0.69524,
+    "x": 0.68317,
     "y": 1.0
    },
    "anchorPx": {
-    "x": 73,
+    "x": 69,
     "y": 48
    },
    "angleDeg": 202.5,
@@ -829,29 +829,29 @@
   },
   "cannon_barrel_10": {
    "frame": {
-    "x": 1291,
-    "y": 1198,
-    "w": 86,
-    "h": 55
+    "x": 459,
+    "y": 1343,
+    "w": 83,
+    "h": 50
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 86,
-    "h": 55
+    "w": 83,
+    "h": 50
    },
    "sourceSize": {
-    "w": 86,
-    "h": 55
+    "w": 83,
+    "h": 50
    },
    "anchor": {
-    "x": 0.69767,
-    "y": 0.87273
+    "x": 0.68675,
+    "y": 0.96
    },
    "anchorPx": {
-    "x": 60,
+    "x": 57,
     "y": 48
    },
    "angleDeg": 225.0,
@@ -859,29 +859,29 @@
   },
   "cannon_barrel_11": {
    "frame": {
-    "x": 391,
-    "y": 1198,
-    "w": 66,
-    "h": 64
+    "x": 1361,
+    "y": 1267,
+    "w": 62,
+    "h": 60
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 66,
-    "h": 64
+    "w": 62,
+    "h": 60
    },
    "sourceSize": {
-    "w": 66,
-    "h": 64
+    "w": 62,
+    "h": 60
    },
    "anchor": {
-    "x": 0.63636,
-    "y": 0.78125
+    "x": 0.6129,
+    "y": 0.83333
    },
    "anchorPx": {
-    "x": 42,
+    "x": 38,
     "y": 50
    },
    "angleDeg": 247.5,
@@ -889,10 +889,10 @@
   },
   "cannon_barrel_12": {
    "frame": {
-    "x": 63,
-    "y": 1198,
+    "x": 1319,
+    "y": 1267,
     "w": 40,
-    "h": 68
+    "h": 64
    },
    "rotated": false,
    "trimmed": false,
@@ -900,15 +900,15 @@
     "x": 0,
     "y": 0,
     "w": 40,
-    "h": 68
+    "h": 64
    },
    "sourceSize": {
     "w": 40,
-    "h": 68
+    "h": 64
    },
    "anchor": {
     "x": 0.5,
-    "y": 0.75
+    "y": 0.79688
    },
    "anchorPx": {
     "x": 20,
@@ -919,26 +919,26 @@
   },
   "cannon_barrel_13": {
    "frame": {
-    "x": 459,
-    "y": 1198,
-    "w": 66,
-    "h": 64
+    "x": 1425,
+    "y": 1267,
+    "w": 61,
+    "h": 60
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 66,
-    "h": 64
+    "w": 61,
+    "h": 60
    },
    "sourceSize": {
-    "w": 66,
-    "h": 64
+    "w": 61,
+    "h": 60
    },
    "anchor": {
-    "x": 0.36364,
-    "y": 0.78125
+    "x": 0.39344,
+    "y": 0.83333
    },
    "anchorPx": {
     "x": 24,
@@ -949,26 +949,26 @@
   },
   "cannon_barrel_14": {
    "frame": {
-    "x": 1379,
-    "y": 1198,
-    "w": 86,
-    "h": 55
+    "x": 544,
+    "y": 1343,
+    "w": 83,
+    "h": 50
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 86,
-    "h": 55
+    "w": 83,
+    "h": 50
    },
    "sourceSize": {
-    "w": 86,
-    "h": 55
+    "w": 83,
+    "h": 50
    },
    "anchor": {
-    "x": 0.30233,
-    "y": 0.87273
+    "x": 0.31325,
+    "y": 0.96
    },
    "anchorPx": {
     "x": 26,
@@ -979,9 +979,9 @@
   },
   "cannon_barrel_15": {
    "frame": {
-    "x": 107,
-    "y": 1269,
-    "w": 105,
+    "x": 732,
+    "y": 1343,
+    "w": 101,
     "h": 48
    },
    "rotated": false,
@@ -989,15 +989,15 @@
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 105,
+    "w": 101,
     "h": 48
    },
    "sourceSize": {
-    "w": 105,
+    "w": 101,
     "h": 48
    },
    "anchor": {
-    "x": 0.30476,
+    "x": 0.31683,
     "y": 1.0
    },
    "anchorPx": {
@@ -1009,8 +1009,8 @@
   },
   "rack": {
    "frame": {
-    "x": 243,
-    "y": 1198,
+    "x": 965,
+    "y": 1267,
     "w": 146,
     "h": 67
    },
@@ -1067,8 +1067,8 @@
   },
   "hatch": {
    "frame": {
-    "x": 1853,
-    "y": 1198,
+    "x": 365,
+    "y": 1343,
     "w": 92,
     "h": 51
    },
@@ -1095,7 +1095,7 @@
   },
   "hatch_open": {
    "frame": {
-    "x": 216,
+    "x": 1221,
     "y": 1068,
     "w": 92,
     "h": 91
@@ -1123,8 +1123,8 @@
   },
   "crate_a": {
    "frame": {
-    "x": 0,
-    "y": 1198,
+    "x": 764,
+    "y": 1267,
     "w": 61,
     "h": 69
    },
@@ -1151,7 +1151,7 @@
   },
   "crate_b": {
    "frame": {
-    "x": 566,
+    "x": 1393,
     "y": 1068,
     "w": 62,
     "h": 86
@@ -1179,8 +1179,8 @@
   },
   "crate_c": {
    "frame": {
-    "x": 527,
-    "y": 1198,
+    "x": 1488,
+    "y": 1267,
     "w": 86,
     "h": 60
    },
@@ -1207,8 +1207,8 @@
   },
   "barrel": {
    "frame": {
-    "x": 1521,
-    "y": 1068,
+    "x": 484,
+    "y": 1267,
     "w": 56,
     "h": 70
    },
@@ -1235,8 +1235,8 @@
   },
   "bucket": {
    "frame": {
-    "x": 493,
-    "y": 1269,
+    "x": 1216,
+    "y": 1343,
     "w": 36,
     "h": 39
    },
@@ -1263,8 +1263,8 @@
   },
   "bucket_empty": {
    "frame": {
-    "x": 531,
-    "y": 1269,
+    "x": 1254,
+    "y": 1343,
     "w": 36,
     "h": 39
    },
@@ -1291,8 +1291,8 @@
   },
   "plank": {
    "frame": {
-    "x": 601,
-    "y": 1269,
+    "x": 1432,
+    "y": 1343,
     "w": 73,
     "h": 19
    },
@@ -1319,8 +1319,8 @@
   },
   "plank_stack": {
    "frame": {
-    "x": 294,
-    "y": 1269,
+    "x": 1131,
+    "y": 1343,
     "w": 83,
     "h": 41
    },
@@ -1347,8 +1347,8 @@
   },
   "ball": {
    "frame": {
-    "x": 569,
-    "y": 1269,
+    "x": 1400,
+    "y": 1343,
     "w": 30,
     "h": 29
    },
@@ -1376,7 +1376,7 @@
   },
   "anchor": {
    "frame": {
-    "x": 488,
+    "x": 1315,
     "y": 1068,
     "w": 76,
     "h": 87
@@ -1404,8 +1404,8 @@
   },
   "flag_0": {
    "frame": {
-    "x": 957,
-    "y": 1198,
+    "x": 1918,
+    "y": 1267,
     "w": 127,
     "h": 57
    },
@@ -1433,8 +1433,8 @@
   },
   "flag_1": {
    "frame": {
-    "x": 744,
-    "y": 1198,
+    "x": 1705,
+    "y": 1267,
     "w": 127,
     "h": 59
    },
@@ -1462,8 +1462,8 @@
   },
   "flag_2": {
    "frame": {
-    "x": 615,
-    "y": 1198,
+    "x": 1576,
+    "y": 1267,
     "w": 127,
     "h": 60
    },
@@ -1491,8 +1491,8 @@
   },
   "flag_3": {
    "frame": {
-    "x": 1086,
-    "y": 1198,
+    "x": 0,
+    "y": 1343,
     "w": 127,
     "h": 57
    },
@@ -1520,7 +1520,7 @@
   },
   "flame_0": {
    "frame": {
-    "x": 806,
+    "x": 1626,
     "y": 1068,
     "w": 54,
     "h": 79
@@ -1548,8 +1548,8 @@
   },
   "flame_1": {
    "frame": {
-    "x": 1579,
-    "y": 1068,
+    "x": 542,
+    "y": 1267,
     "w": 52,
     "h": 70
    },
@@ -1576,8 +1576,8 @@
   },
   "flame_2": {
    "frame": {
-    "x": 1037,
-    "y": 1068,
+    "x": 0,
+    "y": 1267,
     "w": 52,
     "h": 74
    },
@@ -1604,8 +1604,8 @@
   },
   "flame_3": {
    "frame": {
-    "x": 105,
-    "y": 1198,
+    "x": 827,
+    "y": 1267,
     "w": 54,
     "h": 68
    },
@@ -1632,7 +1632,7 @@
   },
   "flame_4": {
    "frame": {
-    "x": 918,
+    "x": 1908,
     "y": 1068,
     "w": 54,
     "h": 77
@@ -1660,7 +1660,7 @@
   },
   "flame_5": {
    "frame": {
-    "x": 862,
+    "x": 1682,
     "y": 1068,
     "w": 54,
     "h": 79
@@ -1688,8 +1688,8 @@
   },
   "leak_0": {
    "frame": {
-    "x": 1467,
-    "y": 1198,
+    "x": 205,
+    "y": 1343,
     "w": 78,
     "h": 55
    },
@@ -1716,8 +1716,8 @@
   },
   "leak_1": {
    "frame": {
-    "x": 873,
-    "y": 1198,
+    "x": 1834,
+    "y": 1267,
     "w": 82,
     "h": 59
    },
@@ -1744,8 +1744,8 @@
   },
   "leak_2": {
    "frame": {
-    "x": 1547,
-    "y": 1198,
+    "x": 285,
+    "y": 1343,
     "w": 78,
     "h": 53
    },
@@ -1772,8 +1772,8 @@
   },
   "leak_3": {
    "frame": {
-    "x": 214,
-    "y": 1269,
+    "x": 1051,
+    "y": 1343,
     "w": 78,
     "h": 47
    },
@@ -1800,7 +1800,7 @@
   },
   "lantern_glow": {
    "frame": {
-    "x": 0,
+    "x": 1005,
     "y": 1068,
     "w": 128,
     "h": 128
@@ -1855,6 +1855,35 @@
     "y": 60
    },
    "note": "same origin as hull (ship centre on deck); draw under the hull, above the sea"
+  },
+  "waterline_foam": {
+   "frame": {
+    "x": 979,
+    "y": 827,
+    "w": 929,
+    "h": 216
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 929,
+    "h": 216
+   },
+   "sourceSize": {
+    "w": 929,
+    "h": 216
+   },
+   "anchor": {
+    "x": 0.50484,
+    "y": 0.28704
+   },
+   "anchorPx": {
+    "x": 469,
+    "y": 62
+   },
+   "note": "same origin as hull; draw between ship_shadow and hull (only the near edge shows)"
   }
  },
  "meta": {
@@ -1863,8 +1892,8 @@
   "image": "ship.png",
   "format": "RGBA8888",
   "size": {
-   "w": 2013,
-   "h": 1317
+   "w": 2045,
+   "h": 1400
   },
   "scale": "1",
   "note": "frames[*].anchor = ground point (normalised): setOrigin(anchor.x, anchor.y). Projection: sx = x*56, sy = -y*32.12 - z*45.87 (ortho 35 deg)."

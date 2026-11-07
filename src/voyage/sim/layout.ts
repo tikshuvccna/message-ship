@@ -71,11 +71,17 @@ export const CANNON_IDS: CannonId[] = ['cannon_bow', 'cannon_far', 'cannon_near'
 
 export interface CannonDef { id: CannonId; base: number; arc: number; muzzle: number }
 const D = Math.PI / 180;
+/**
+ * Aim arc (half angle). The contract says +-35 deg; playtesting the geometry showed that a side cannon then
+ * covers only ~3 m along the hull at typical creature distances, so creatures sat outside every arc most of
+ * the time. +-50 deg keeps the "each cannon has its own sector" feel and is logged in REQUESTS.md.
+ */
+export const ARC = 50 * D;
 export const CANNONS: Record<CannonId, CannonDef> = {
-  cannon_bow: { id: 'cannon_bow', base: 0, arc: 35 * D, muzzle: 0.85 },
-  cannon_stern: { id: 'cannon_stern', base: Math.PI, arc: 35 * D, muzzle: 0.8 },
-  cannon_far: { id: 'cannon_far', base: Math.PI / 2, arc: 35 * D, muzzle: 0.75 },
-  cannon_near: { id: 'cannon_near', base: -Math.PI / 2, arc: 35 * D, muzzle: 0.75 },
+  cannon_bow: { id: 'cannon_bow', base: 0, arc: ARC, muzzle: 0.85 },
+  cannon_stern: { id: 'cannon_stern', base: Math.PI, arc: ARC, muzzle: 0.8 },
+  cannon_far: { id: 'cannon_far', base: Math.PI / 2, arc: ARC, muzzle: 0.75 },
+  cannon_near: { id: 'cannon_near', base: -Math.PI / 2, arc: ARC, muzzle: 0.75 },
 };
 /** Height of the cannon muzzles above the deck (display only). */
 export const MUZZLE_Z = 0.85;
@@ -105,6 +111,8 @@ export function onDeck(x: number, y: number, margin = 0): boolean {
 }
 
 /** Ballistics constants. */
+/** One lantern ball gives this many light shots. */
+export const SHOTS_PER_BALL = 3;
 export const BALL_SPEED = 15; // m/s relative to the ship
 export const BALL_RANGE = 12; // m
 export const BALL_RADIUS = 0.16;

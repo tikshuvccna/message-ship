@@ -31,7 +31,7 @@ export function spawnCreature(
     hp: def.hp * (friendly ? 1 : 1 + diff * 0.35), maxHp: 0,
     r, rx: isCharge ? r * 1.25 : r, ry: isCharge ? r * 0.85 : r,
     maxSpeed: (def.speed / PX_PER_M) * (1 + 0.2 * diff),
-    state: friendly ? 'act' : 'enter', t: 0, cd: rng.range(2.2, 4.0), ang: rng.range(0, Math.PI * 2),
+    state: friendly ? 'act' : 'enter', t: 0, cd: rng.range(4, 7), ang: rng.range(0, Math.PI * 2),
     side: y >= sy ? 1 : -1, attack: null, tx: 0, ty: 0, group, dx: 0, dy: 0, jamming: null, stun: 0, hitFlash: 0,
     face: x > 0 ? -1 : 1, wave, friendly, hostile: !friendly,
   };
@@ -40,7 +40,7 @@ export function spawnCreature(
     // pass by the ship at a fixed lateral offset, from ahead
     c.x = rng.range(15, 17);
     c.side = rng.chance(0.5) ? 1 : -1;
-    c.ty = sy + c.side * rng.range(4.6, 6.2);
+    c.ty = sy + c.side * rng.range(6, 7.6);
     c.y = c.ty + rng.range(-0.8, 0.8);
   }
   if (def.behavior === 'skitter') {
@@ -208,13 +208,14 @@ function behave(w: World, c: Creature, dt: number): void {
       c.vx += (flow - c.vx) * damp(1.2, dt);
       const ty = c.ty + Math.sin(c.t * 0.7 + c.uid) * 0.6;
       c.vy += ((ty - c.y) * 0.8 - c.vy) * damp(1.5, dt);
-      const e = ellipseNorm(c.x, c.y, 0, sy, HULL_RX + c.r + 1.7, HULL_RY + c.r + 1.7);
+      const e = ellipseNorm(c.x, c.y, 0, sy, HULL_RX + c.r + 3.2, HULL_RY + c.r + 3.2);
       if (e < 1 && c.cd <= 0) startTelegraph(w, c, 'shock', c.x, c.y);
       if (c.x < -18) c.state = 'gone';
       break;
     }
     case 'swarm': {
-      const ga = c.ang + w.t * ((sp * 0.6) / 8) + c.group * 0.9;
+      // a flock hovers in its own sector of the sea (sweeping back and forth), so one cannon can cover it
+      const ga = c.ang + Math.sin(c.t * 0.22 + c.group) * 0.8 + Math.sin(c.t * 1.3 + c.uid) * 0.12;
       const r = 7.6 + Math.sin(w.t * 1.7 + c.uid) * 0.8;
       const tx = Math.cos(ga) * (r + 2.4), ty = sy + Math.sin(ga) * r * 0.85;
       steerTo(c, tx, ty, sp * catchUp(tx, ty), dt, 1.2, 9);
@@ -246,7 +247,7 @@ function doAttack(w: World, c: Creature): void {
         fireBolt(w, c.uid, c.x, c.y, c.x + Math.cos(a) * 10, c.y + Math.sin(a) * 10, spd);
       }
       c.state = 'recover';
-      c.cd = b === 'shooter' ? cdFor(w, 3.6, 1.8) : cdFor(w, 4.6, 2.2);
+      c.cd = b === 'shooter' ? cdFor(w, 4.5, 2) : cdFor(w, 6, 2.5);
       break;
     }
     case 'charge': {
@@ -269,17 +270,17 @@ function doAttack(w: World, c: Creature): void {
       break;
     }
     case 'shock': {
-      const e = ellipseNorm(c.x, c.y, 0, w.ship.y, HULL_RX + c.r + 2.4, HULL_RY + c.r + 2.4);
+      const e = ellipseNorm(c.x, c.y, 0, w.ship.y, HULL_RX + c.r + 3.8, HULL_RY + c.r + 3.8);
       if (e < 1) {
         const p = hullContact(w, c.x, c.y);
-        if (hullHit(w, 5, p.x, p.y)) {
+        if (hullHit(w, 4, p.x, p.y)) {
           sfx(w, 'thunder', c.x);
           if (w.rng.chance(0.3)) addFire(w, p.x, p.y * 0.8);
         }
       }
       emit(w, { e: 'telegraph', uid: c.uid, attack: 'zap' });
       c.state = 'recover';
-      c.cd = cdFor(w, 4, 2);
+      c.cd = cdFor(w, 5, 2);
       break;
     }
     case 'board': {
@@ -298,19 +299,19 @@ function stepAttack(w: World, c: Creature, dt: number): void {
     const p = hullContact(w, c.x, c.y);
     const n = hullNormal(w, c);
     if (c.attack === 'charge') {
-      if (hullHit(w, 12, p.x, p.y)) {
+      if (hullHit(w, 8, p.x, p.y)) {
         if (w.rng.chance(0.6)) addLeak(w, p.x, p.y * 0.8);
         sfx(w, 'wave_slam', c.x);
       }
       pushShip(w, -n.y * 1.6);
       c.vx = n.x * 3;
       c.vy = n.y * 3;
-      c.cd = cdFor(w, 6, 2.5);
+      c.cd = cdFor(w, 7, 3);
     } else {
-      if (hullHit(w, 2, p.x, p.y)) sfx(w, 'hit_wrong', c.x);
+      if (hullHit(w, 1, p.x, p.y)) sfx(w, 'hit_wrong', c.x);
       c.vx = n.x * 4;
       c.vy = n.y * 4;
-      c.cd = cdFor(w, 3, 2);
+      c.cd = cdFor(w, 5, 3);
     }
     c.state = 'recover';
     c.t = 0;
@@ -385,7 +386,9 @@ function stepDeckCreature(w: World, c: Creature, dt: number): void {
       if (d < bd) { bd = d; best = id; }
     }
     if (best) {
-      const u = STATIONS[best].use;
+      // stand beside the cannon (not on the gunner's spot)
+      const st = STATIONS[best];
+      const u = { x: (st.use.x + st.x) / 2 + (st.y === 0 ? 0 : -0.75), y: (st.use.y + st.y) / 2 + (st.y === 0 ? 0.75 : 0) };
       const dx = u.x - c.dx, dy = u.y - c.dy;
       const d = Math.hypot(dx, dy);
       if (d < 0.45) {
@@ -400,8 +403,8 @@ function stepDeckCreature(w: World, c: Creature, dt: number): void {
     }
   }
   if (c.cd <= 0) {
-    c.cd = 1.6;
-    hullHit(w, 1.5, c.dx, c.dy);
+    c.cd = 2;
+    hullHit(w, 1, c.dx, c.dy);
     if (w.rng.chance(0.18)) addLeak(w, c.dx + w.rng.range(-0.8, 0.8), c.dy * 0.7);
   }
   c.x = c.dx;

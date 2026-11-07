@@ -195,7 +195,7 @@ function slam(w: World, a: BossArm): void {
   const x = Math.max(-7, Math.min(6.5, a.baseX * 0.6));
   const y = Math.abs(a.baseY) < 3 ? a.baseY * 0.5 : side * (HULL_RY - 1.2);
   emit(w, { e: 'shake', amount: 0.5 });
-  if (hullHit(w, 7, x, y)) {
+  if (hullHit(w, 6, x, y)) {
     sfx(w, 'wave_slam', x);
     const r = w.rng.next();
     if (r < 0.45) addLeak(w, x, y);

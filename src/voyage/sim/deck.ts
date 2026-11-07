@@ -5,7 +5,7 @@
 import { assistTarget, canFire, clampAim, fireCannon } from './combat';
 import { shooDeck, splashOff } from './creatures';
 import {
-  CANNON_IDS, CANNONS, RACK_SLOT_Y, STATIONS, WALK_MARGIN, WALK_X_MAX, WALK_X_MIN, halfBeam, onDeck, rackSlotAtX,
+  CANNON_IDS, CANNONS, RACK_SLOT_Y, SHOTS_PER_BALL, STATIONS, WALK_MARGIN, WALK_X_MAX, WALK_X_MIN, halfBeam, onDeck, rackSlotAtX,
   type CannonId, type StationId,
 } from './layout';
 import { approachAngle, clamp, wrapAngle } from './math';
@@ -107,7 +107,7 @@ export function decide(w: World, p: Player): Act | null {
       case 'cannon_bow': case 'cannon_stern': case 'cannon_far': case 'cannon_near': {
         const c = w.cannons[st];
         if (c.jam) return { a: 'jammed' };
-        if (h?.kind === 'ball') return c.loaded ? { a: 'loaded' } : { a: 'load', c: st };
+        if (h?.kind === 'ball') return { a: 'load', c: st }; // loads, refills or swaps the rule
         if (!h) return { a: 'man', c: st };
         break;
       }
@@ -195,6 +195,7 @@ function perform(w: World, p: Player, act: Act): void {
       const c = w.cannons[act.c];
       if (p.held?.kind === 'ball' && p.held.ammo) {
         c.loaded = p.held.ammo;
+        c.charges = SHOTS_PER_BALL;
         c.loadT = Math.max(0.2, w.stats.reloadSec || 1.6);
         p.held = null;
         p.at = act.c;
@@ -368,6 +369,7 @@ export function stepItems(w: World, dt: number): void {
         if (c.loaded || c.jam) continue;
         if (it.z < 1.4 && Math.hypot(STATIONS[id].x - it.x, STATIONS[id].y - it.y) < 0.75) {
           c.loaded = it.ammo;
+          c.charges = SHOTS_PER_BALL;
           c.loadT = Math.max(0.2, w.stats.reloadSec || 1.6);
           it.uid = -1;
           sfx(w, 'load', STATIONS[id].x);
@@ -585,7 +587,7 @@ export function stepCannons(w: World, dt: number): void {
 // ---- Bit, the lantern companion (single player) ------------------------------
 
 const BIT_SPEED = 2.4;
-const BIT_REPAIR = 0.28; // fraction of a player's repair speed
+const BIT_REPAIR = 0.4; // fraction of a player's repair speed
 
 export function stepBit(w: World, dt: number): void {
   const b = w.bit;
